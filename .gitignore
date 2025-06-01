@@ -1,0 +1,8 @@
+# Ignore any node_modules directory
+**/node_modules/
+
+# Ignore any _MACOSX directory
+**/_MACOSX/
+
+node_modules/
+_MACOSX/
