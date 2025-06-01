@@ -2,7 +2,7 @@
 **/node_modules/
 
 # Ignore any _MACOSX directory
-**/_MACOSX/
+**/__MACOSX/
 
 node_modules/
-_MACOSX/
+__MACOSX/
