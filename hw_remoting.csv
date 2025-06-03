@@ -1,1475 +1,961 @@
 name,server1,server2,client1,proto1,proto2,proto3
-何嘉柚,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: letters[tracking_id].house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+solution,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { studentName: call.request.studentName, house: house, trackingId: tracking_id });","console.log(`霍格華茲錄取通知已寄出！
+學生: ${response.studentName}
+學院: ${response.house}
+追蹤碼: ${response.trackingId}
+`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,string studentName = 1; string house = 2; string status = 3;
+何嘉柚,"[nl]    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    callback(null, {
+[nl]        studentName: call.request.studentName,
+[nl]        house: letters[tracking_id].house,
+[nl]        trackingId: tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","[nl]  rpc sendLetter (LetterRequest) returns (LetterResponse);
+[nl]",string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 余采嬙,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-傅子珈,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName, 
-
-        house: house, 
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",,,
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
+傅子珈,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","callback(null, { 
+[nl]        studentName: call.request.studentName, 
+[nl]        house: house, 
+[nl]        trackingId: tracking_id 
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]",,,
 傅鈺婷,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickup_code = 1;,"string status= 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id 
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]",string pickup_code = 1;,"string status= 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
 劉修維,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: letters[tracking_id].student,
-
-        house: letters[tracking_id].house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",,,
+[nl]        studentName: letters[tracking_id].student,
+[nl]        house: letters[tracking_id].house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",,,
 劉楚婷,"console.log(`寄送信件給${call.request.studentName}, 學院: ${house}, 追蹤碼: ${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);
+[nl]","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 劉白,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`內霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-劉秉治,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`)","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house, 
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;
-
-  string code = 4;
-
-  string details = 5;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`內霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
+劉秉治,"[nl]    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`)
+[nl]","[nl]    callback(null, {
+[nl]        studentName: call.request.studentName,
+[nl]        house: house, 
+[nl]        trackingId: tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]  string code = 4;
+[nl]  string details = 5;
+[nl]"
 吳唯禎,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-吳姵萱,"console.log(`寄送信件給<${call.request.studentName}>,學院：${house},追蹤碼：${tracking_id}`);","callback(null,{
-
-		studentName:call.request.studentName,
-
-		house:house,
-
-		tracking_Id:tracking_id
-
-	});","// ex: console.log(`內容`);
-
-		console.log(`霍格華茲錄取通知已寄出！\n 學生：${response.studentName}\n 學院：${response.house}\n 追蹤碼：${response.tracking_Id}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
+吳姵萱,"console.log(`寄送信件給<${call.request.studentName}>,學院：${house},追蹤碼：${tracking_id}`);
+[nl]","[nl]
+[nl]	callback(null,{
+[nl]		studentName:call.request.studentName,
+[nl]		house:house,
+[nl]		tracking_Id:tracking_id
+[nl]	});","// ex: console.log(`內容`);
+[nl]		console.log(`霍格華茲錄取通知已寄出！\n 學生：${response.studentName}\n 學院：${response.house}\n 追蹤碼：${response.tracking_Id}`);
+[nl]","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 吳岱芸,"const studentName = call.request.studentName;
-
-    console.log(`寄送信件給 <${studentName}>, 學院：${house}, 追蹤碼： ${tracking_id}`)","callback(null,{
-
-			studentName: studentName, 
-
-			house: house,
-
-			trackingId: tracking_id
-
-		});","// ex: console.log(`內容`);
-
-		console.log(`霍格華茲錄取通知已寄出！`);
-
-		console.log(`學生: ${response.studentName}`);
-
-		console.log(`學院: ${response.house}`);
-
-		console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-	string house = 2;
-
-	string status = 3;"
+[nl]    console.log(`寄送信件給 <${studentName}>, 學院：${house}, 追蹤碼： ${tracking_id}`)","callback(null,{
+[nl]			studentName: studentName, 
+[nl]			house: house,
+[nl]			trackingId: tracking_id
+[nl]		});","// ex: console.log(`內容`);
+[nl]		console.log(`霍格華茲錄取通知已寄出！`);
+[nl]		console.log(`學生: ${response.studentName}`);
+[nl]		console.log(`學院: ${response.house}`);
+[nl]		console.log(`追蹤碼: ${response.trackingId}`);
+[nl]",[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);,"string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]	string house = 2;
+[nl]	string status = 3;
+[nl]"
 吳武峰,"console.log(
-
-        `寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
-
-    );","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    })","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}\n\n`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        `寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
+[nl]    );","callback(null, { 
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    })","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}\n\n`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 吳珮嘉,"const studentName = call.request.studentName;
-
-    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
+[nl]        studentName: studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 周映辰,,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
-
-
-
-    callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1; // 該信件所屬學生
-
-  string house = 2;       // 學院
-
-  string status = 3;      // 信件目前狀態"
-唐湘怡,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-		studentName: call.request.studentName, 
-
-      	house: house, 
-
-      	trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-
-
-		console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}\n`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]
+[nl]    callback(null, {
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]
+[nl]","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]
+[nl]","string pickupCode = 1;
+[nl]
+[nl]","string studentName = 1; // 該信件所屬學生
+[nl]  string house = 2;       // 學院
+[nl]  string status = 3;      // 信件目前狀態
+[nl]
+[nl]"
+唐湘怡,"[nl]	console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    callback(null, {
+[nl]		studentName: call.request.studentName, 
+[nl]      	house: house, 
+[nl]      	trackingId: tracking_id 
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]
+[nl]		console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}\n`);
+[nl]","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 嚴聲遠,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}\n`);","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1; 
-
-  string studentName = 2;
-
-  string house = 3;"
-尤敏米茲夠,"studentName = call.request.studentName
-
-    trackingId = call.request.trackingId
-
-    // 印出信件資訊
-
-    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","if(letters[tracking_id]) {
-
-        callback(null, { 
-
-            studentName: letters[tracking_id].student,
-
-            house: letters[tracking_id].house,
-
-            trackingId: tracking_id 
-
-        });
-
-    }","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id 
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1; 
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
+尤敏米茲夠,"[nl]    studentName = call.request.studentName
+[nl]    trackingId = call.request.trackingId
+[nl]    // 印出信件資訊
+[nl]    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    if(letters[tracking_id]) {
+[nl]        callback(null, { 
+[nl]            studentName: letters[tracking_id].student,
+[nl]            house: letters[tracking_id].house,
+[nl]            trackingId: tracking_id 
+[nl]        });
+[nl]    }
+[nl]","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 廖偉哲,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-    studentName: call.request.studentName,
-
-    house: house,
-
-    trackingId: tracking_id
-
-    });","console.log(""霍格華茲錄取通知已寄出！"");
-
-      console.log(`學生: ${response.studentName}`);
-
-      console.log(`學院: ${response.house}`);
-
-      console.log(`追蹤碼: ${response.trackingId}`);","// sendLetter：寄送信件
-
-  rpc SendLetter (LetterRequest) returns (LetterResponse);",string pickupCode = 1;  // 使用信件末三碼作為查詢碼,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;  // 信件目前狀態"
+[nl]    studentName: call.request.studentName,
+[nl]    house: house,
+[nl]    trackingId: tracking_id
+[nl]    });","console.log(""霍格華茲錄取通知已寄出！"");
+[nl]      console.log(`學生: ${response.studentName}`);
+[nl]      console.log(`學院: ${response.house}`);
+[nl]      console.log(`追蹤碼: ${response.trackingId}`);","[nl]  // sendLetter：寄送信件
+[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;  // 使用信件末三碼作為查詢碼
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;  // 信件目前狀態
+[nl]"
 廖安豪,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 廖家樂,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`)","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"")
-
-        console.log(`學生: ${response.studentName}`)
-
-        console.log(`學院: ${response.house}`)
-
-        console.log(`追蹤碼: ${response.trackingId}`)",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id 
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"")
+[nl]        console.log(`學生: ${response.studentName}`)
+[nl]        console.log(`學院: ${response.house}`)
+[nl]        console.log(`追蹤碼: ${response.trackingId}`)","[nl]  rpc sendLetter (LetterRequest) returns (LetterResponse);
+[nl]",string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;
+[nl]"
 張曜麟,"console.log(`寄送信件給${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {studentName:call.request.studentName, house:house, trackingId:tracking_id});","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生：${response.studentName}\n學院：${response.house}\nnode追蹤碼：${response.trackingId}`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生：${response.studentName}\n學院：${response.house}\nnode追蹤碼：${response.trackingId}`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 張芸禎,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 曾博鴻,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 曾奕誠,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`)
-
-        console.log(`信件狀態: ${response.status}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`)
+[nl]        console.log(`信件狀態: ${response.status}`);",[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);,[nl]  string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 李冠蓁,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-      });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-李昕璇,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-李昕融,console.log(`寄送信件給 ${call.request.studentName}，學院：${house}，追蹤碼：${tracking_id}`),"callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id,
-
-    });","// ex: console.log(`內容`);
-
-
-
-        console.log(""霍格華茲錄取通知已寄出"")
-
-        console.log(`學生：${response.studentName}`)
-
-        console.log(`學院：${response.house}`)
-
-        console.log(`追蹤碼：${response.trackingId}`)",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string pickUpCode = 1;
-
-  string status = 2;
-
-  string studentName = 3;
-
-  string house = 4;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]      });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
+李昕璇,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    callback(null, {
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);,"string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
+李昕融,"[nl]    console.log(`寄送信件給 ${call.request.studentName}，學院：${house}，追蹤碼：${tracking_id}`)
+[nl]","[nl]    callback(null, { 
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id,
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]
+[nl]        console.log(""霍格華茲錄取通知已寄出"")
+[nl]        console.log(`學生：${response.studentName}`)
+[nl]        console.log(`學院：${response.house}`)
+[nl]        console.log(`追蹤碼：${response.trackingId}`)
+[nl]","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string pickUpCode = 1;
+[nl]  string status = 2;
+[nl]  string studentName = 3;
+[nl]  string house = 4;
+[nl]"
 李柏漢,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${call.request.house}, 追蹤碼：${call.request.tracking_id}`)","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    })","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
-李胤寬,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,　
-
-        house: house,　
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log('霍格華茲錄取通知已寄出！');
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1; 
-
-  string house = 2; 
-
-  string status = 3;"
-李若綺,"const studentName = call.request.studentName;
-
-    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    })","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;
+[nl]"
+李胤寬,"[nl]
+[nl]    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","callback(null, {
+[nl]        studentName: call.request.studentName,　
+[nl]        house: house,　
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log('霍格華茲錄取通知已寄出！');
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]
+[nl]",string pickupCode = 1;,"string studentName = 1; 
+[nl]  string house = 2; 
+[nl]  string status = 3;"
+李若綺,"[nl]    const studentName = call.request.studentName;
+[nl]    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    callback(null, {
+[nl]        studentName: studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });
+[nl]","[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 李采萱,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`); // 將追蹤碼加入請求中","callback(null, { 
-
-        studentName: call.request.studentName, 
-
-        house: house, 
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1; 
-
-  string studentName = 2; 
-
-  string house = 3;"
+[nl]        studentName: call.request.studentName, 
+[nl]        house: house, 
+[nl]        trackingId: tracking_id 
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string status = 1; 
+[nl]  string studentName = 2; 
+[nl]  string house = 3;"
 林冠儀,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id 
-
-    });
-
-    //console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id 
+[nl]    });
+[nl]    //console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
 林叡啟,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        student: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
-林子葳,"const studentName = call.request.studentName;
-
-    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {studentName, house, trackingId: tracking_id});","// ex: console.log(`內容`);
-
-
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        student: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
+林子葳,"[nl]    const studentName = call.request.studentName;
+[nl]    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    callback(null, {studentName, house, trackingId: tracking_id});
+[nl]","// ex: console.log(`內容`);
+[nl]
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]",rpc sendLetter (LetterRequest) returns (LetterResponse);,"string pickupCode = 1;
+[nl]","string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;
+[nl]"
 林明輝,"console.log(`寄送信件給 ${call.request.studentName},學院：${house}, 追蹤碼： ${tracking_id}`);","callback(null,{
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        tracking_id: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;  
-
-  string house = 2;       
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        tracking_id: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;  
+[nl]  string house = 2;       
+[nl]  string status = 3;
+[nl]"
 林韋宏,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName, 
-
-        house: house, 
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        studentName: call.request.studentName, 
+[nl]        house: house, 
+[nl]        trackingId: tracking_id 
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
 柯侑易,"console.log(
-
-        `寄送信件給 ${call.request.studentName}, 學院： ${house}, 追蹤碼： ${tracking_id}`
-
-    )","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    })","// ex: console.log(`內容`);
-
-        console.log(
-
-            `霍格華茲錄取通知已寄出！\n` +
-
-            `學生: ${response.studentName}\n` +
-
-            `學院: ${response.house}\n` +
-
-            `追蹤碼: ${response.trackingId}`)",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        `寄送信件給 ${call.request.studentName}, 學院： ${house}, 追蹤碼： ${tracking_id}`
+[nl]    )","callback(null, {
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    })","// ex: console.log(`內容`);
+[nl]        console.log(
+[nl]            `霍格華茲錄取通知已寄出！\n` +
+[nl]            `學生: ${response.studentName}\n` +
+[nl]            `學院: ${response.house}\n` +
+[nl]            `追蹤碼: ${response.trackingId}`)",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
 楊宗儒,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`)","if (letters[tracking_id]) {
-
-        callback(null, { 
-
-            studentName: letters[tracking_id].student,
-
-            house: letters[tracking_id].house,
-
-            trackingId: tracking_id 
-
-        });
-
-    }
-
-    else {
-
-        callback({
-
-            code: grpc.status.UNIMPLEMENTED,
-
-            details: ""寄送信件失敗""
-
-        })
-
-    }","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`)
-
-        console.log(`學生: ${response.studentName}`)
-
-        console.log(`學院: ${response.house}`)
-
-        console.log(`追蹤碼: ${response.trackingId}`)",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        callback(null, { 
+[nl]            studentName: letters[tracking_id].student,
+[nl]            house: letters[tracking_id].house,
+[nl]            trackingId: tracking_id 
+[nl]        });
+[nl]    }
+[nl]    else {
+[nl]        callback({
+[nl]            code: grpc.status.UNIMPLEMENTED,
+[nl]            details: ""寄送信件失敗""
+[nl]        })
+[nl]    }","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`)
+[nl]        console.log(`學生: ${response.studentName}`)
+[nl]        console.log(`學院: ${response.house}`)
+[nl]        console.log(`追蹤碼: ${response.trackingId}`)",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
 沈思妤,"console.log('寄送信件給',call.request.studentName,', 學院：',house,', 追蹤碼：',tracking_id);","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log('霍格華茲錄取通知已寄出！');
-
-        console.log('學生:', response.studentName);
-
-        console.log('學院:', response.house);
-
-        console.log('追蹤碼:', response.trackingId);","rpc sendLetter (LetterRequest) returns (LetterResponse);
-
-  rpc trackLetter (TrackRequest) returns (TrackResponse);",string pickup_code = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log('霍格華茲錄取通知已寄出！');
+[nl]        console.log('學生:', response.studentName);
+[nl]        console.log('學院:', response.house);
+[nl]        console.log('追蹤碼:', response.trackingId);","rpc sendLetter (LetterRequest) returns (LetterResponse);
+[nl]  rpc trackLetter (TrackRequest) returns (TrackResponse);
+[nl]","string pickup_code = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 王子翔,"const studentName = call.request.studentName;
-
-  console.log(
-
-    `寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
-
-  );","callback(null, { studentName, house, trackingId: tracking_id });","// ex: console.log(`內容`);
-
-    console.log(""霍格華茲錄取通知已寄出！"");
-
-    console.log(`學生: ${response.studentName}`);
-
-    console.log(`學院: ${response.house}`);
-
-    console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-莊羽媗,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;  
-
-  string house = 2;        
-
-  string status = 3;"
+[nl]  console.log(
+[nl]    `寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
+[nl]  );","callback(null, { studentName, house, trackingId: tracking_id });","// ex: console.log(`內容`);
+[nl]    console.log(""霍格華茲錄取通知已寄出！"");
+[nl]    console.log(`學生: ${response.studentName}`);
+[nl]    console.log(`學院: ${response.house}`);
+[nl]    console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
+莊羽媗,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","callback(null, {
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,"string pickupCode = 1;   
+[nl]","string studentName = 1;  
+[nl]  string house = 2;        
+[nl]  string status = 3;       
+[nl]"
 蔡景紘,"const studentName = call.request.studentName;
-
-        console.log('寄送信件給 '+ studentName + ', 學院：'+ house + ', 追蹤碼：'+ tracking_id);","callback(null,{
-
-        studentName: studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    }
-
-
-
-    );","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc sendLetter(LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName= 2;
-
-  string house = 3;"
+[nl]        console.log('寄送信件給 '+ studentName + ', 學院：'+ house + ', 追蹤碼：'+ tracking_id);","callback(null,{
+[nl]        studentName: studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    }
+[nl]
+[nl]    );","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",[nl]  rpc sendLetter(LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
+[nl]  string studentName= 2;
+[nl]  string house = 3;
+[nl]"
 蔡汶璋,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-蔡詠丞,"const sn=call.request.studentName;
-
-    const ti=tracking_id;
-
-    const h=house;
-
-    console.log(`寄送信件給 ${sn}, 學院：${h}, 追蹤碼：${ti}`);","const sn1=call.request.studentName;
-
-    const ti1=tracking_id;
-
-    const h1=house;
-
-    callback(null, { studentName: sn1, house: h1, trackingId: ti1 });","// ex: console.log(`內容`);
-
-
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string pickupCode = 1;
-
-  string status = 2;
-
-  string studentName = 3;
-
-  string house = 4;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
+蔡詠丞,"[nl]    const sn=call.request.studentName;
+[nl]    const ti=tracking_id;
+[nl]    const h=house;
+[nl]    console.log(`寄送信件給 ${sn}, 學院：${h}, 追蹤碼：${ti}`);
+[nl]","[nl]    const sn1=call.request.studentName;
+[nl]    const ti1=tracking_id;
+[nl]    const h1=house;
+[nl]    callback(null, { studentName: sn1, house: h1, trackingId: ti1 });
+[nl]","// ex: console.log(`內容`);
+[nl]
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);
+[nl]","[nl]  rpc sendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string pickupCode = 1;
+[nl]  string status = 2;
+[nl]  string studentName = 3;
+[nl]  string house = 4;
+[nl]"
 蕭名容,"console.log(
-
-    `寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
-
-  );","callback(null, {
-
-    studentName: call.request.studentName,
-
-    house: house,
-
-    trackingId: tracking_id,
-
-  });","// ex: console.log(`內容`);
-
-    console.log(""霍格華茲錄取通知已寄出！"");
-
-    console.log(`學生: ${response.studentName}`);
-
-    console.log(`學院: ${response.house}`);
-
-    console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]    `寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
+[nl]  );","callback(null, {
+[nl]    studentName: call.request.studentName,
+[nl]    house: house,
+[nl]    trackingId: tracking_id,
+[nl]  });
+[nl]","// ex: console.log(`內容`);
+[nl]    console.log(""霍格華茲錄取通知已寄出！"");
+[nl]    console.log(`學生: ${response.studentName}`);
+[nl]    console.log(`學院: ${response.house}`);
+[nl]    console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 蕭孟汝,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
-謝妍晞,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-        });","// ex: console.log(`內容`);
-
-
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
+謝妍晞,"[nl]    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    callback(null, {
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]        });
+[nl]","// ex: console.log(`內容`);
+[nl]
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 賴元智,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-郭彥頡,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id} `);","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);","rpc sendLetter (LetterRequest) returns (LetterResponse);
-
-  rpc trackLetter (TrackRequest) returns (TrackResponse);",string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
-金娜伶,"const studentName = call.request.studentName;
-
-    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`)","/*if(letters[tracking_id]){
-
-        callback(null,{
-
-            studentName: letters[tracking_id].student,
-
-            house: letters[tracking_id].house,
-
-            status: letters[traking_id].status
-
-
-
-        })
-
-    }*/
-
-
-
-    callback(null, {
-
-        studentName: studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc sendLetter (LetterRequest) returns (LetterResponse) {},"string pickupCode = 1;
-
-  //string studentName= 2;
-
-  //string house = 3;
-
-  //string status = 4;","//string pickupCode = 1;
-
-  string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]",string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
+郭彥頡,"[nl]    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id} `);
+[nl]","[nl]    callback(null, { 
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","[nl]  rpc sendLetter (LetterRequest) returns (LetterResponse);
+[nl]  rpc trackLetter (TrackRequest) returns (TrackResponse);
+[nl]
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
+金娜伶,"[nl]    const studentName = call.request.studentName;
+[nl]    console.log(`寄送信件給 ${studentName}, 學院：${house}, 追蹤碼：${tracking_id}`)
+[nl]
+[nl]","[nl]    /*if(letters[tracking_id]){
+[nl]        callback(null,{
+[nl]            studentName: letters[tracking_id].student,
+[nl]            house: letters[tracking_id].house,
+[nl]            status: letters[traking_id].status
+[nl]
+[nl]        })
+[nl]    }*/
+[nl]
+[nl]    callback(null, {
+[nl]        studentName: studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);
+[nl]","[nl]  rpc sendLetter (LetterRequest) returns (LetterResponse) {}
+[nl]
+[nl]","string pickupCode = 1;
+[nl]  //string studentName= 2;
+[nl]  //string house = 3;
+[nl]  //string status = 4;
+[nl]
+[nl]","[nl]  //string pickupCode = 1;
+[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]
+[nl]"
 陳奕利,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 陳家祥,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`)","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,int32 pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,int32 pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
 陳建銘,"console.log(`寄送信件給 ${call.request.studentName}, 學院:${house}, 追蹤碼:${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName, 
-
-        house: house, 
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName, 
+[nl]        house: house, 
+[nl]        trackingId: tracking_id 
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]  
+[nl]",string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 陳昶安,"console.log(
-
-    `寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
-
-  );","callback(null, {
-
-    studentName: call.request.studentName,
-
-    house: house,
-
-    trackingId: tracking_id,
-
-  });","// ex: console.log(`內容`);
-
-    console.log(`霍格華茲錄取通知已寄出！`);
-
-    console.log(`學生: ${response.studentName}`);
-
-    console.log(`學院: ${response.house}`);
-
-    console.log(`追蹤碼: ${response.trackingId}`);","// 定義 sendLetter 方法，接收 LetterRequest，返回 LetterResponse
-
-  rpc SendLetter (LetterRequest) returns (LetterResponse);",string pickupCode = 1; // 信件尾三碼取件碼,"string studentName = 1; // 學生姓名
-
-  string house = 2;       // 學院名稱
-
-  string status = 3;      // 信件狀態"
+[nl]    `寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
+[nl]  );","callback(null, {
+[nl]    studentName: call.request.studentName,
+[nl]    house: house,
+[nl]    trackingId: tracking_id,
+[nl]  });","// ex: console.log(`內容`);
+[nl]    console.log(`霍格華茲錄取通知已寄出！`);
+[nl]    console.log(`學生: ${response.studentName}`);
+[nl]    console.log(`學院: ${response.house}`);
+[nl]    console.log(`追蹤碼: ${response.trackingId}`);","[nl]  // 定義 sendLetter 方法，接收 LetterRequest，返回 LetterResponse
+[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]",string pickupCode = 1; // 信件尾三碼取件碼,"string studentName = 1; // 學生姓名
+[nl]  string house = 2;       // 學院名稱
+[nl]  string status = 3;      // 信件狀態"
 陳柏淵,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
-
-  rpc TrackLetter (TrackRequest) returns (TrackResponse);",string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]  rpc TrackLetter (TrackRequest) returns (TrackResponse);",string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 陳楷璿,"console.log(
-
-    `寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
-
-  )","callback(null, {
-
-    studentName: call.request.studentName,
-
-    house: house,
-
-    trackingId: tracking_id,
-
-  })","// ex: console.log(`內容`);
-
-    console.log(`霍格華茲錄取通知已寄出！`)
-
-    console.log(`學生: ${response.studentName}`)
-
-    console.log(`學院: ${response.house}`)
-
-    console.log(`追蹤碼: ${response.trackingId}`)",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-    string studentName = 2;
-
-    string house = 3;"
+[nl]    `寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`
+[nl]  )
+[nl]","callback(null, {
+[nl]    studentName: call.request.studentName,
+[nl]    house: house,
+[nl]    trackingId: tracking_id,
+[nl]  })
+[nl]","// ex: console.log(`內容`);
+[nl]    console.log(`霍格華茲錄取通知已寄出！`)
+[nl]    console.log(`學生: ${response.studentName}`)
+[nl]    console.log(`學院: ${response.house}`)
+[nl]    console.log(`追蹤碼: ${response.trackingId}`)
+[nl]","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string status = 1;
+[nl]    string studentName = 2;
+[nl]    string house = 3;
+[nl]"
 陳炫霖,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 陳竣哲,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { studentName: call.request.studentName, house: house, trackingId: tracking_id });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 陳良鈺,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-}   );","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1; 
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]}   );","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]",string pickupCode = 1;,"string studentName = 1; 
+[nl]  string house = 2;
+[nl]  string status = 3;"
 陳若庭,"console.log(`寄送信件給 ${call.request.studentName}\n`);
-
-    console.log(`學院: ${house}\n`);
-
-    console.log(`追蹤碼: ${tracking_id}\n`);","callback(null, { 
-
-        studentName: call.request.studentName,
-
-        house,
-
-        tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！\n"");
-
-        console.log(`學生: ${response.studentName}\n`);
-
-        console.log(`學院: ${response.house}\n`);
-
-        console.log(`追蹤碼：${response.tracking_id}\n`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]    console.log(`學院: ${house}\n`);
+[nl]    console.log(`追蹤碼: ${tracking_id}\n`);","callback(null, { 
+[nl]        studentName: call.request.studentName,
+[nl]        house,
+[nl]        tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！\n"");
+[nl]        console.log(`學生: ${response.studentName}\n`);
+[nl]        console.log(`學院: ${response.house}\n`);
+[nl]        console.log(`追蹤碼：${response.tracking_id}\n`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 陳詠,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName, 
-
-        house: house, 
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc sendLetter(LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status =1;
-
-  string studentName = 2;
-
-  string house = 3;"
-陳鎮成,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id} `);","callback(null, { 
-
-        trackingId: tracking_id,
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);","// 新增寄送信件功能
-
-  rpc SendLetter (LetterRequest) returns (LetterResponse);",string pickupCode  = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName, 
+[nl]        house: house, 
+[nl]        trackingId: tracking_id 
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","rpc sendLetter(LetterRequest) returns (LetterResponse);
+[nl]","string pickupCode = 1;
+[nl]","string status =1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;
+[nl]"
+陳鎮成,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id} `);
+[nl]","callback(null, { 
+[nl]        trackingId: tracking_id,
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","[nl]  // 新增寄送信件功能
+[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]
+[nl]
+[nl]",[nl]  string pickupCode  = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 陸人瑋,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 顏聖峰,"console.log((`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`));","callback(null, {
-
-    studentName: call.request.studentName,house: house,trackingId: tracking_id","console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1; // 學生姓名
-
-  string house = 2;      // 所屬學院
-
-  string status = 3;"
+[nl]    studentName: call.request.studentName,house: house,trackingId: tracking_id","console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]",[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"[nl]  string studentName = 1; // 學生姓名
+[nl]  string house = 2;      // 所屬學院
+[nl]  string status = 3; 
+[nl]"
 黃科寯,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 黃筠,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
-黃茂勛,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-        studentName: call.request.studentName,
-
-        house: house,
-
-        trackingCode: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出！`);
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingCode}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]","rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]",string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;
+[nl]"
+黃茂勛,"[nl]    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    callback(null, {
+[nl]        studentName: call.request.studentName,
+[nl]        house: house,
+[nl]        trackingCode: tracking_id
+[nl]    });
+[nl]","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出！`);
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingCode}`);","[nl]  rpc SendLetter (LetterRequest) returns (LetterResponse);
+[nl]","[nl]  string pickupCode = 1;
+[nl]","[nl]  string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;
+[nl]"
 黃蓉容,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, { 
-
-        studentName: call.request.studentName, 
-
-        house: house, 
-
-        trackingId: tracking_id 
-
-    });","// ex: console.log(`內容`);
-
-        console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house       = 2;
-
-  string status      = 3;"
+[nl]        studentName: call.request.studentName, 
+[nl]        house: house, 
+[nl]        trackingId: tracking_id 
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);
+[nl]
+[nl]",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house       = 2;
+[nl]  string status      = 3;"
 黃顥霆,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);","callback(null, {
-
-      studentName: call.request.studentName,
-
-      house: house,
-
-      trackingId: tracking_id
-
-    });","console.log(""霍格華茲錄取通知已寄出！"");
-
-        console.log(`學生: ${response.studentName}`);
-
-        console.log(`學院: ${response.house}`);
-
-        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
-
-  string house = 2;
-
-  string status = 3;"
+[nl]      studentName: call.request.studentName,
+[nl]      house: house,
+[nl]      trackingId: tracking_id
+[nl]    });","console.log(""霍格華茲錄取通知已寄出！"");
+[nl]        console.log(`學生: ${response.studentName}`);
+[nl]        console.log(`學院: ${response.house}`);
+[nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
+[nl]  string house = 2;
+[nl]  string status = 3;"
 龔俐恬,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}\n`)","callback(null,{
-
-        studentName:call.request.studentName,
-
-        house: house,
-
-        trackingId: tracking_id
-
-    });","// ex: console.log(`內容`);
-
-        console.log(`霍格華茲錄取通知已寄出!\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}\n`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
-
-  string studentName = 2;
-
-  string house = 3;"
+[nl]        studentName:call.request.studentName,
+[nl]        house: house,
+[nl]        trackingId: tracking_id
+[nl]    });","// ex: console.log(`內容`);
+[nl]        console.log(`霍格華茲錄取通知已寄出!\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}\n`);",rpc sendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string status = 1;
+[nl]  string studentName = 2;
+[nl]  string house = 3;"
