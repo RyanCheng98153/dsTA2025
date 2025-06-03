@@ -1,5 +1,5 @@
 name,q1,q2,q3,q4,q5,q6,q7
-solution,B,A,四|4,,找不到,咆嘯信已送達,沒變化
+solution,B,A,四|4|constowlPostProto=grpc.loadPackageDefinition(packageDefinition).owlpost,編號|field number|tag|欄位|序|Tag,找不到|不存在,"咆嘯信已送達|""咆哮信已送達""",沒|可以|camelcase|camelCase|Camelcase|CamelCase|駝峰式|pickupCode|不|底線|能執行|可行|合法|undefined|可能
 何嘉柚,B,A,對應到 server 與 client 的第四行: const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string代表後面接的欄位的資料類型是字串，後面接的數字代表Field Number，用來序列/反序列化。,"查詢信件狀態(尾號 xxx) 找不到該信件  =>  callback func: code: grpc.status.NOT_FOUND, details: ""找不到該信件""",查詢信件狀態 (尾碼 xx4): 咆嘯信已送達,底線會被自動轉成camelCase
 余采嬙,B,A,第 4 行,在 Protocol Buffers 中，string 是一種 data type（gRPC 是 strong datatype），表示欄位儲存字串。等號後有數字是欄位的 field tag，是 protobuf 序列化時用來識別欄位用的，message 傳送時的順序會根據欄位編號排序，且使用欄位號來代表欄位而非欄位名稱可減少資料大小，,server 會回傳“查詢信件狀態(尾號 ＸＸＸ) 找不到該信件”，並且不會顯示學生和學院資料。,"""咆嘯信已送達""",可順利編譯與使用不會錯誤，就算用 snake_case，server 和 client 等檔案程式裡依照 proto 命名即可成功，且 gRPC 跨語言支援性好，在產生程式碼時會根據語言自動轉換命名風格。
 傅子珈,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表字串的型別，數字則是將每個欄位編號,查詢信件狀態(尾號 XXX) 找不到該信件 callback(err) 傳回的是錯誤物件而非回傳 null、undefined,咆嘯信已送達,可以的，一樣可以執行，但在某些語法中會被轉換型態成駝峰式語法
