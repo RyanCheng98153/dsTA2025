@@ -1,14 +1,47 @@
 import os
 import csv
+import re
 
 hw_dir = "./remoting_students"
-readme_csv_path = "hw_remoting_readme_answers.csv"
+readme_csv_path = "hw_remoting_readme_answer.csv"
+
+solutions = [
+    'B',
+    'A',
+    '四|4',
+    '',
+    '找不到',
+    '咆嘯信已送達',
+    '沒變化',
+]
+
+def parse_answers_from_content(content):
+    # 把所有行合併成一個字串
+    combined = '\n'.join(content)
+
+    # 嘗試根據 1. 2. 3. ... 分段
+    pattern = r'(?:^|\n)([1-7])\.\s*(.*?)\s*(?=\n[1-7]\.|$)'
+    matches = re.findall(pattern, combined, re.DOTALL)
+
+    if matches and len(matches) >= 1:
+        # 如果有標號分段
+        result = [''] * 7
+        for num_str, ans in matches:
+            index = int(num_str) - 1
+            result[index] = ans.strip()
+        return result
+    else:
+        # 如果沒有標號，就使用前 7 行
+        lines = [line.strip() for line in content if line.strip()]
+        while len(lines) < 7:
+            lines.append('')
+        return lines[:7]
 
 with open(readme_csv_path, mode='w', newline='', encoding='utf-8') as csvfile:
     writer = csv.writer(csvfile)
-    # 標頭欄位：name, q1 ~ q7
     headers = ['name'] + [f'q{i}' for i in range(1, 8)]
     writer.writerow(headers)
+    writer.writerow(['solution'] + solutions)
 
     for stud_dir in os.listdir(hw_dir):
         full_path = os.path.join(hw_dir, stud_dir)
@@ -23,10 +56,7 @@ with open(readme_csv_path, mode='w', newline='', encoding='utf-8') as csvfile:
             answers = [''] * 7
         else:
             with open(readme_path, 'r', encoding='utf-8') as f:
-                lines = [line.strip() for line in f.readlines() if line.strip()]
-                # 只保留前 7 答，少的補空字串
-                while len(lines) < 7:
-                    lines.append('')
-                answers = lines[:7]
+                lines = f.readlines()
+                answers = parse_answers_from_content(lines)
 
         writer.writerow([stud_name] + answers)

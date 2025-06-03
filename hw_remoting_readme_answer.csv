@@ -1,0 +1,268 @@
+name,q1,q2,q3,q4,q5,q6,q7
+solution,B,A,四|4,,找不到,咆嘯信已送達,沒變化
+何嘉柚,B,A,對應到 server 與 client 的第四行: const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string代表後面接的欄位的資料類型是字串，後面接的數字代表Field Number，用來序列/反序列化。,"查詢信件狀態(尾號 xxx) 找不到該信件  =>  callback func: code: grpc.status.NOT_FOUND, details: ""找不到該信件""",查詢信件狀態 (尾碼 xx4): 咆嘯信已送達,底線會被自動轉成camelCase
+余采嬙,B,A,第 4 行,在 Protocol Buffers 中，string 是一種 data type（gRPC 是 strong datatype），表示欄位儲存字串。等號後有數字是欄位的 field tag，是 protobuf 序列化時用來識別欄位用的，message 傳送時的順序會根據欄位編號排序，且使用欄位號來代表欄位而非欄位名稱可減少資料大小，,server 會回傳“查詢信件狀態(尾號 ＸＸＸ) 找不到該信件”，並且不會顯示學生和學院資料。,"""咆嘯信已送達""",可順利編譯與使用不會錯誤，就算用 snake_case，server 和 client 等檔案程式裡依照 proto 命名即可成功，且 gRPC 跨語言支援性好，在產生程式碼時會根據語言自動轉換命名風格。
+傅子珈,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表字串的型別，數字則是將每個欄位編號,查詢信件狀態(尾號 XXX) 找不到該信件 callback(err) 傳回的是錯誤物件而非回傳 null、undefined,咆嘯信已送達,可以的，一樣可以執行，但在某些語法中會被轉換型態成駝峰式語法
+傅鈺婷,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost; -> 對應到.proto 檔中的 package owlpost;）,string代表資料型別是字串，後面的數字代表每個欄位的編號,"回傳錯誤訊息""找不到該信件""","""咆嘯信已送達""",在JavaScript讀取的時候會被轉為駝峰式（student_name會變成studentName），所以如果用 response.student_name 會讀不到，要用 response.studentName
+劉修維,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string是資料型別，代表這個欄位的值是字串，後面的數字叫做field number，每個欄位都要指定一個唯一的數字,ex : 跑node track.js 391，跑node track.js這個終端顯示 : 查詢信件狀態(尾號 391) 找不到該信件跑node server.js的終端顯示 : 查詢信件狀態 (尾碼 391): 信件不存在,"""咆嘯信已送達""，因為status: letter_status[tracking_id.slice(-1)]，讓status為letter_status[tracking_id的最後一碼] = letter_status[4]",技術上可以，但不建議使用，因為不同語言會依照語言的命名慣例自動轉換成不同形式，例如JavaScript/Node.js : student_name → studentName（camelCase）
+劉楚婷,B,A,對應到 server 和 client 的第4行，const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 表示數據類型是字串，等號後面接的數字是設置 field number,會回傳「查詢信件狀態(尾號 xxx) 找不到該信件」。xxx會是查詢的號碼,咆嘯信已送達,將 proto 中的命名使用底線，並且在 server、client、trace 相對應的變數設置成有底線、與 proto 命名相符的版本，還是有正常運作
+劉白,B,A,第4⾏ - const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表字串，等號後面的數字是欄位標籤,查詢信件狀態(尾號 undefined) 找不到該信件,"""咆嘯信已送達""",不會發生什麽是
+劉秉治,B,A,在此次的作業中，.proto的package皆對應第4行程式，以內容為「const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;」的方式被設定。,(1) proto中的string代表server和client傳輸該欄位資料的型別是字串。(2) string的欄位名稱後等號接的數字代表該欄位對於Protocol Buffers在傳輸資料時，用來序列化資料的唯一識別碼。,trackLetter 如果找不到對應的信件時，在server.js的介面會顯示「查詢信件狀態 (尾碼 xxx): 信件不存在」，並回傳「找不到該信件」，則track.js的介面就會顯示「查詢信件狀態(尾號 xxx) 找不到該信件」。,在執行 track.js 的時候，若查看信件追蹤碼尾號(最後一碼)為 4 的信件追蹤，信件狀態會寫「查詢信件狀態(尾號 xx4)：咆嘯信已送達」。,有嘗試過將「底線(underscore) ”_”」放在「message」的命名和「string」欄位的命名，發現程式還是可以正常運作，不會發生什麼事。
+吳唯禎,(B),(A),對應在const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string是字串，但後面接的是序列的tag number,找不到對應的信件時會出現「找不到該信件」，這是因為會觸發error,信件狀態會出現「咆嘯信已送達」,比如改成tracking_Id（要跟著改server跟client的）但是能執行的
+吳姵萱,B,A,第四行,string代表字串，數字代表欄位編號，用來做編碼的識別標籤,"會回傳""查詢信件狀態(尾號 xxx) 找不到該信件"",沒什麼特別變化","""咆嘯信已送達""",不會怎麼樣，因為loader會自動幫你轉成對應的命名格式(EX:pick_upcode會改成pickupCode)
+吳岱芸,B,A,第4行，const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表字串類型，後面的數字代表該欄位的編號,"server會回傳""信件不存在""；client會回傳""找不到該信件""","""咆嘯信已送達""",是合法的，但會影響轉換後名稱，無法變大寫
+吳武峰,B,A,第4⾏,代表解碼時的欄位編號,"會回傳""查詢信件狀態(尾號 XXX) 找不到該信件""","""咆嘯信已送達""",沒什麼變化
+吳珮嘉,B,A,會對應到client和server中的第4行(const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;)。,string代表資料型別是文字，等號後面接數字是代表欄位的編號，它的作用是在二進制格式中，用來識別欄位。,"當trackLetter找不到對應的信件時，server會呼叫callback({code: grpc.status.NOT_FOUND, details: ""找不到該信件""})，並印出""查詢信件狀態 (尾碼 ${pickup_code}): 信件不存在""的error訊息，然後client端(track.js)收到後會進入 err 分支，顯示錯誤訊息""查詢信件狀態(尾號 ${pickup_code}) 找不到該信件""，error的訊息都會變成紅色的。","""咆嘯信已送達""",在JS中會變成Camel case，為了符合JS使用習慣，@grpc/proto-loader會自動轉換成Camel case。
+周映辰,B,A,第4行,string 是資料型態，代表字串；數字是欄位編號，會用這個數字來做資料序列化，比用欄位名稱更節省空間和效率。每個欄位需給一個唯一的數字編號。,"會回傳 ""找不到該信件""，沒有什麼特別的變化。","""咆嘯信已送達""",沒什麼變化
+唐湘怡,B,A,第4⾏,string 代表字串，數字代表欄位編號，用來標示訊息的欄位,"會回傳""查詢信件狀態(尾號 xxx) 找不到該信件""，沒什麼變化","""咆哮信已送達""",使用底線命名是合法的，故不會發生什麼事，proto-loader會自動將pickup_code改成pickupCode
+嚴聲遠,B,A,第4行,"string 代表字串, 因為後面接的是識別的碼，是用來序列化的","會回傳""查詢信件狀態(尾號 xxx) 找不到該信件"", xxx是你查詢的追蹤碼末三碼","""咆嘯信已送達""","沒什麼變化, .proto 檔案中，欄位名稱使用 snake_case (帶底線) 是推薦且常見的風格。gRPC 的程式碼產生器會自動將 snake_case 的欄位名稱轉換成目標語言的慣用風格（例如 JavaScript/Java 中的 camelCase）。"
+尤敏米茲夠,B,A,第3行,代表該 field 的資料型別，數字代表 serialization 後對應 field 的相對位置,"會回傳""找不到該信件"", gRPC 有內建的錯誤處理機制，對應到 grpc.status.NOT_FOUND，除了 NOT_FOUND，還有 UNKNOWN, INVALID_ARGUMENT 等等可以用",查詢信件狀態(尾號 4) 找不到該信件,proto loader 對 javascript 默認本來就會把 snake_case 轉成 camelCase，但如果在protoLoader.loadSync 把 keepCase: true 就會報錯
+廖偉哲,B,A,對應到，const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string表示這些變數的資料型別，後面的數字是 Protocol Buffers 用來序列化資料的重要索引,在track端會顯示，查詢信件狀態(尾號 111) 找不到該信件，在server端會顯示，查詢信件狀態 (尾碼 111): 信件不存在,會顯示，查詢信件狀態(尾號 994)：咆嘯信已送達 學生: Harry Potter 學院: 格蘭芬多,沒反應，因為使用底線命名屬於合法行為
+廖安豪,B,A,第 4 ⾏,string 是一種 variant type 表示字串，因為等號後面的數字是 field number，在編碼時用來識別這個欄位,"會回傳""查詢信件狀態(尾號 <辨識碼尾號>) 找不到該信件""","""咆嘯信已送達""",沒什麼變化
+廖家樂,B,A,3、4 行。,`string` 表示型別，等號後面紀錄的是**次序**。,"""找不到該信件""。","""咆嘯信已送達""。",沒有變化。
+張曜麟,B,A,"// 建立 gRPC 伺服器 const server = new grpc.Server(); server.addService(owlPostProto.OwlPost.service, { sendLetter, trackLetter });",string 代表資料格式是字串；等號後面接的數字只是代表其順序。,"會顯示""查詢信件狀態(尾號 xxx) 找不到該信件""，尾號 xxx 會隨著搜尋的尾號變化。","會顯示""咆嘯信已送達""",RPC 方法與訊息類型官方建議用 CamelCase（例如 sendLetter），欄位名稱建議用 lower_snake_case（例如 tracking_id），使用底線命名不會導致編譯錯誤，但它會在不同語言的生成程式碼中觸發自動命名轉換，可能引起混淆或錯誤存取的問題，導致發生呼叫不到正確方法或找不到屬性的狀況。
+張芸禎,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string代表欄位的數據類型，等號後面的數字（如 = 1）代表欄位編號(次序),返回預設值的空訊息（例如 LetterResponse 中所有欄位為空）。透過 Status 返回錯誤碼（如 NOT_FOUND）,尾號 4 對應特定狀態（如「已送達」或「特殊處理」），需在 Server 端實作此規則。,"語法沒錯，但在轉換成 JavaScript / TypeScript / Python 物件時，會被轉為 camelCase，例如：
+
+    pickup_code → pickupCode
+
+    student_name → studentName"
+曾博鴻,B,A,在 client 與 server 的第 4 行，程式碼是：const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表字串，等號後的數字是用來定義在資料序列化時辨識欄位（Protocol Buffers 的欄位 tag）,"如果尾號 123 的信件不存在，則 server 端會印出""查詢信件狀態 (尾碼 123): 信件不存在""，並回傳給 client 端：""查詢信件狀態(尾號 123) 找不到該信件""","""咆嘯信已送達""","如果使用底線命名為 ""student_name"" ，在 JavaScript 中會轉換成 ""studentName"""
+曾奕誠,(B) HTTP/2,(A) 定義 API 介面與訊息格式,4,string 是一種 資料型別，代表 UTF-8 編碼的字串。等號後面的數字是 tag number，用於訊息序列化時區分欄位,通常會回傳一個 特定的錯誤訊息 或 空的狀態資料。,若實作中有使用 gRPC 的錯誤處理機制（例如 NOT_FOUND），就會：回傳 status code = NOT_FOUND 附帶錯誤訊息（如：Letter not found）在客戶端收到時，會觸發 error callback，這是一個跟 HTTP 相似但更嚴謹的錯誤傳遞方式,信件不存在
+李冠蓁,B,A,皆為第四行。const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表資料型態為字串，後面數字則可以識別此資料在第幾個欄位。,回傳「查詢信件狀態(尾號 xxx) 找不到該信件」。狀態設為 NOT_FOUND，track.js 會執行 console.err。,咆嘯信已送達,不影響
+李昕璇,B,A,第4行,(1)代表這個欄位是文字資料 (2)代表欄位的 唯一 ID，用於序列化與反序列化時辨識欄位,"""找不到該信件""。callback 會傳遞一個錯誤物件，而不是正常的資料回應","""咆嘯信已送達""",可以的，不會有誤
+李昕融,B,A,"server 的 `const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;` , client 的 `const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;`","string 代表資料的型別, 等好後面的數字代表傳輸時的唯一識別碼",查詢信件狀態(尾號 123) 找不到該信件,查詢信件狀態(尾號 204)：咆嘯信已送達,"可以, 但他還是會根據其他語言轉成相對應的格式 (ex : JS 會變駝峰命名)"
+李柏漢,B,A,第四行,string代表資料型態為字串，數字指的是次序,會回傳“查詢信件狀態(尾號 undefined) 找不到該信件”,"""咆嘯信已送達""",沒什麼變化
+李胤寬,B,A,第4行,string 代表字串，等號後面接數字表示序號,"會回傳 ""查詢信件狀態(尾號 ***) 找不到該信件""","""咆嘯信已送達""","如果改studentName改成student_Name，會變成 ""學生: undefined"""
+李若綺,B,A,第4⾏,string代表文字字串的資料型態，接數字是代表欄位的編號，protobuf傳輸時作為識別用,"在server會回傳""查詢信件狀態 (尾碼 {末三碼}): 信件不存在""，而在track會回傳err.details，顯示為""查詢信件狀態(尾號 {末三碼}) 找不到該信件""","""咆嘯信已送達""",可以在proto使用底線命名，但在JavaScript呼叫時需要改成camelCase
+李采萱,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,"field types, 代表每個資料型態的序號，不可以重複，也必須為正整數。","會顯示：""查詢信件狀態 (尾碼 xxx): 信件不存在""","""咆嘯信已送達""",我執行起來沒問題，但上網查是說不建議。 https://github.com/protocolbuffers/protobuf/issues/15899
+林冠儀,B,A,第4行,string 代表字串; 因爲 protocol buffers 在序列化時識別欄位，壓縮資料和解析。,會回傳“查詢信件狀態(尾號 xxx) 找不到該信件”，沒什麼特別變化,“咆嘯信已送達”,不會發生任何事，proto-loader會自動將pickup_code改成pickupCode，在.js檔案中，依然可以正常使用pickupCode變數名稱跑動運行。(`snake_case` → `camelCase`)
+林叡啟,B,A,都是第4行,string 就是字串，像'Harry Potter'。後面的數字是 protobuf 二進位格式的關鍵編碼資訊。,回傳'查詢信件狀態 (尾碼): 信件不存在',咆嘯信已送達,正常運行不會發生什麼事。
+林子葳,B,A,第4行,string代表字符串，後面的數字是tag number，用來識別,"會回傳""查詢信件狀態(尾號 xxx) 找不到該信件""，xxx是查詢不到的追蹤碼尾號","""咆嘯信已送達""",沒有影響
+林明輝,B,A,grpc.loadPackageDefinition(packageDefinition),proto 中 string 使用 UTF-8,查詢信件狀態(尾號 xxx) 找不到該信件,查詢信件狀態(尾號 4) 找不到該信件,只要_不在變數名字的最前面基本上都行
+林韋宏,B,A,皆在第四行被Load進去,string 代表request/response message的內容變數型態，其後面等號接的數字代表資料的排序號,track: 查詢信件狀態(尾號 XXX) 找不到該信件 / server: 查詢信件狀態 (尾碼 XXX): 信件不存在,咆嘯信已送達,我將track中的TrackRequest中的pickupCode改成pickup_Code後，仍可以正常運作，並無發現異常，但查過資料後發現，若使用底線分隔，有可能會讓變數名稱decode後出現跟其他變數/函式撞名的情況
+柯侑易,B,A,在 client 和 server 中對應到 const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表資料型別，等號後的數字是 filed tag，代表訊息欄位的唯一編號，在 Protobuf 的二進位編碼中用來識別欄位。,若是找不到信件，則會回傳 查詢信件狀態(尾號 005) 找不到該信件,若是最後一碼為 4 ，其回傳 查詢信件狀態(尾號 034)：咆嘯信已送達,在 js 中不會發生任何事，執行上也沒問題。
+楊宗儒,B,A,server.js與client.js中的const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;，代表load namespace中所有packages後找package=owlpost。,string代表以Protocol Buffer方式Encoding的Message中Tag的Type欄位；數字代表解碼次序，decoding時可以透過map .proto檔案來還原變數名稱,server端: 查詢信件狀態 (尾碼 pickup_code): 信件不存在；client端: 查詢信件狀態(尾號 pickup_code) 找不到該信件,咆嘯信已送達,"當在proto檔中用""_""進行變數命名時，若是 string ho_use = 1，不論是client端還是server端的js檔皆要用hoUse才能抓到。結論:可以使用，但要注意不同語言的慣用命名風格"
+沈思妤,B,A,皆為第4行,string代表此欄位的資料型態，等號後面的數字代表欄位編號，因作為辨識標籤故不可重複。,"假如信件100不存在，會回傳""查詢信件狀態(尾號 100) 找不到該信件""。沒什麼特別的變化。","""咆嘯信已送達""",沒什麼變化。因在protobuf生成JS程式碼會自動將snake_case欄位名稱轉為camelCase。
+王子翔,,,,,,,
+莊羽媗,(B) HTTP/2,(A) 定義 API 介面與訊息格式,"(1) proto 中的 package 在 server 中對應到的程式碼  第4行
+
+const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;             //載入proto檔案，再通過 grpc.loadPackageDefinition 解析           
+
+
+
+這樣就可以用下面那行程式碼把 OwlPost加到 gRPC 中，並指定去做 sendLetter 和 trackLetter 
+
+server.addService(owlPostProto.OwlPost.service, { sendLetter, trackLetter });
+
+
+
+(2) 在 client 中對應到的程式碼 第4行
+
+const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;         //讓client端可以成功訪問server端的服務
+
+
+
+之後調用 sendLetter 
+
+
+
+client.sendLetter({ studentName: ""Harry Potter"" }, (err, response) => {
+
+    if (!err) {
+
+        console.log(""霍格華茲錄取通知已寄出！"");
+
+        console.log(`學生: ${response.studentName}`);
+
+        console.log(`學院: ${response.house}`);
+
+        console.log(`追蹤碼: ${response.trackingId}`);
+
+    } else {
+
+        console.error(err.details);
+
+    }
+
+});
+
+
+
+執行成功就會出現
+
+PS C:\Users\angelachuang\Downloads\2025-newlab-remoting\student> node client.js
+
+霍格華茲錄取通知已寄出！
+
+學生: Harry Potter
+
+學院: 拉文克勞
+
+追蹤碼: 93a77539-3601-44d7-ac8e-bcdcfa116d72-695
+
+
+
+(3) 在 proto 檔案中定義 package
+
+package owlpost;  
+
+這個 package 定義了命名空間，所有在這個檔案中定義的服務和 message 都會被放在 owlpost 。","proto 中的 string 是一種資料型別，用來定義訊息中的一個field，這個field會儲存一個文本的值。(像是名字、身分證字號及學號都可以用string表示)
+
+等號後面接的數字代表的是 field number，他是唯一的，這些 field number 用來表示資料被序列化，這時 proto 會用這些 field number 來決定處理資料的順序，可以提高序列化與反序列化的效率。","trackLetter 如果找不到對應的信件時，會回傳""查詢信件狀態 (尾碼 XXX): 信件不存在""。
+
+其中 ""尾碼 XXX""就是執行 node track.js XXX 所要查詢狀態的信件，而  XXX 就是 node client.js 成功後會給的追蹤碼末三碼。尾碼若存在會正常顯示狀態，若不存在則會顯示""查詢信件狀態 (尾碼 XXX): 信件不存在。
+
+
+
+""信件不存在""是使用 gRPC 錯誤碼來指示找不到信件;若找不到對應的信件， server 會執行以下程式碼並回傳。
+
+
+
+callback({
+
+    code: grpc.status.NOT_FOUND,    //////gRPC 錯誤代碼
+
+    details: ""找不到該信件""
+
+});
+
+
+
+//trackLetter 如果找不到對應的信件，輸入 node track.js 696 會顯示:
+
+PS C:\Users\angelachuang\Downloads\2025-newlab-remoting\student> node track.js 696
+
+查詢信件狀態(尾號 696) 找不到該信件
+
+
+
+//trackLetter 如果找不到對應的信件，server 端會顯示:
+
+查詢信件狀態 (尾碼 696): 信件不存在","查詢信件的追蹤碼尾號為 4 的信件時，從以下程式碼知道伺服器會根據追蹤碼的最後一位數字來決定信件的狀態。
+
+letters[tracking_id] = { 
+
+    student: call.request.studentName, 
+
+    house: house, 
+
+    status: letter_status[tracking_id.slice(-1)],   //////tracking_id.slice(-1) 是指從追蹤碼的最尾端取出最後一個字符
+
+};
+
+
+
+再來看看貓頭鷹信件的所有狀態
+
+const letter_status = [
+
+    ""正在進行魔法處理"",                               /////letter_status[0]
+
+    ""正在等待鄧不力多的魔法指示"", 
+
+    ""貓頭鷹迷路了"",
+
+    ""貓頭鷹正在休息"",
+
+    ""咆嘯信已送達"",                                  /////letter_status[4]
+
+    ""信件被迫返回魔法部"",
+
+    ""信件已被食死徒攔截"",
+
+    ""信件仍待在隱形信箱中"",
+
+    ""已送達學院，正在尋找正確的宿舍門牌"",
+
+    ""已轉交給尼可勒梅的時間轉換器管理員""
+
+];
+
+
+
+陣列 letter_status 包含了 10 種不同的狀態，當tracking_id.slice(-1) 是 4 時，這對應到letter_status[4]，就是""咆嘯信已送達""。
+
+(陣列是從0開始，所以letter_status[4]應該是第五個，就是""咆嘯信已送達"")","如果使用底線(underscore) ”_” 進行命名，生成的 gRPC client 端的 code 會把底線命名轉換為""駝峰式命名""，像是student_name 會被轉換為 studentName，而tracking_id 會被轉換為 trackingId；因此即便在 proto 檔案中使用了底線命名，最終在你的應用程式中可能還是會看到駝峰式命名。"
+蔡景紘,(B),(A),第4行,string表示欲傳遞變數的資料型態是字串。後面的數字用來為每個欄位進行tag，在進行反序列化時，可以根據tag來判斷對應到的欄位。,"track client端會回傳：""查詢信件狀態(尾號 '查詢號碼') 找不到該信件""
+
+  server 端會回傳：""查詢信件狀態 (尾碼 '查詢號碼'): 信件不存在""","""咆嘯信已送達""",根據實測，使用'_'命名是可行的，程式照常執行
+蔡汶璋,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表欄位的資料型別，等號後面的數字是欄位的標籤（tag）編號，用於在二進制編碼中識別欄位。,"會回傳 `code: grpc.status.NOT_FOUND` 和 `details: ""找不到該信件""`，特別變化：這是一個錯誤回應，而不是正常的 TrackResponse 訊息。","""咆嘯信已送達""。",在 Protocol Buffers 中，使用底線命名是允許的，但建議使用駝峰式命名法（camelCase）來保持一致性。
+蔡詠丞,B,A,第4行,string代表字串，後面的數字表示辨識該欄位的標籤,"會顯示 ""找不到該信件""，沒有特別的變化","""咆嘯信已送達""",不會發生什麼事
+蕭名容,B,A,在 server 和 client 端皆是透過 `const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;` 來設定,`string` 代表資料的資料型態，後面的數字代表的是「次序」，用來判別是哪個欄位。,會回傳 `查詢信件狀態(尾號 <輸入的尾號>) 找不到該信件`，而在 server 端顯示的是 `查詢信件狀態 (尾碼 <輸入的尾號>): 信件不存在`，兩者皆為紅字的錯誤訊息。,"""咆嘯信已送達""",假設 .proto 中某一欄位名稱設定為 `student_name`，在程式碼中(例如 client.js)，我們無法透過 `student_name` 來存取該欄位，而是需要使用 `studentName` 來操作。表示 Protocol Buffers 會根據 JavaScript 的命名習慣(Camel Case) 進行轉換。
+蕭孟汝,B,A,第 4 ⾏,string 代表型別，後面的數字用來當識別碼代表次序。,"會回傳""查詢信件狀態(尾號 xxx) 找不到該信件""，Client 端不會取得 response。","""咆嘯信已送達""",會被轉成 camelCase
+謝妍晞,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 表示欄位的資料型別是字串; 等號後面的數字是 protobuf 的欄位編號，用來在序列化資料時辨識欄位順序與內容。,"如果查不到信件，
+
+   client 會顯示：""查詢信件狀態(尾號 xxx) 找不到該信件"" ;
+
+   server terminal 則會印出：""查詢信件狀態 (尾碼 xxx): 信件不存在""。
+
+   這代表 server 是用 gRPC 的錯誤處理方式，回傳一個 NOT_FOUND 的錯誤，所以在 client 那邊會直接跳進錯誤處理。
+
+   算是一個有特別變化的情況，不是單純顯示查不到，而是用錯誤機制來處理。",咆嘯信已送達,可以正常使用，但在轉譯成 JavaScript 時會自動轉為 camelCase 命名。
+賴元智,B,A,第四行,是代表欄位的資料型別為字串，等號後的數字是這個欄位的唯一識別碼，用數字可以比較快又節省空間,查詢信件狀態 (尾碼 xxx): 信件不存在，並且字的顏色變成紅色,咆嘯信已送達,不會出錯，因為Protobuf會依照不同程式語言自動轉換命名風格
+郭彥頡,B,A,在server.js中，第2將proto設定load進來，並於第3行定義，而client.js中也是一樣的情況。,用string型別來儲存資料，而後面的數字表示資料的Tag,"回傳: ""查詢信件狀態 (尾碼 XXX): 信件不存在"" && 沒有特別變化","""咆嘯信已送達""",不會發生神麼事，但是相對應的變數名稱必須跟著修改。
+金娜伶,B,A,第4行,string 是 protobuf type. 等號後面的數字是field number，在message被序列化時，用來在產生的binary data中區分各個field。,"track.js: ""查詢信件狀態(尾號 124) 找不到該信件""
+
+    server.js: ""查詢信件狀態 (尾碼 124): 信件不存在""","""查詢信件狀態(尾號 124) 找不到該信件""",undefined
+陳奕利,B,A,在 server 對應到的是 `const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;` ，在這裡載入 package；在 client 中對應到的也是 `const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;`。,代表這個欄位的資料型態是 string。等號後接的數字是欄位名稱的識別碼，可以節省傳輸。,找不到對應信件時會回傳錯誤 code：grpc.status.NOT_FOUND 和 detail：找不到該信件。反之，如果找到時是回傳找到的信件資訊。,咆嘯信已送達,改成底線命名（snakecase）不會有任合問題，不過在 javascript 的程式碼仍然要用 camelCase。舉例來說，proto 中定義為 student_name，在 javascript 中要用 studentName。
+陳家祥,B,A,第 4 ⾏ (const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;)，這行程式碼的「.owlpost」 就是 owl_post.proto 中 「package owlpost」; 的對應。,string 代表這個欄位的資料是「文字字串」，後面的數字是欄位的 Tag number，是唯一且不重複的欄位 ID，Protobuf 壓縮、傳輸資料時，便是以此編號來辨識欄位。,"Server 會回傳錯誤代碼 5 (代表 NOT_FOUND) ，以及錯誤訊息 ""找不到該信件""。因此，track.js 會印出 ""查詢信件狀態(尾號 734) 找不到該信件""。","""咆嘯信已送達""",沒什麼變化，gRPC stub 會自動轉換成該語言慣用的命名格式。
+陳建銘,B,A,第四行:const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,資料型別，代表資料的序號,回傳錯誤訊息:查詢信件狀態(尾號XXX) 找不到該信件，XXX會根據你所找的信件尾號改變,"""咆嘯信已送達""",undefined
+陳昶安,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,Protocol Buffers 定義的一種基本資料結構，用來表示字串，這種資料型別可以包含任意的文字資料，例如文字、句子或其他文字資訊。等號後面的數字是該欄位的唯一標識符（field number），確保欄位在二進制格式中唯一，並且提高序列化效率，因為 Protocol Buffers 使用數字而非欄位名稱來標識欄位,"server 回傳：callback({ code: grpc.status.NOT_FOUND, details: ""找不到該信件"", });。client 會收到錯誤碼 NOT_FOUND 表示資源未找到，並且 err.details 中包含錯誤訊息 ""找不到該信件""，並且此訊息在客戶端的輸出顯示","信件狀態取決於伺服器端 sendLetter 方法中定義的 letter_status 陣列，當追蹤碼尾號為 4 時，狀態是陣列中的第 5 個元素。因此，當尾號為 4 時，信件狀態是 ""咆嘯信已送達""。
+
+   const letter_status = [
+
+   ""正在進行魔法處理"",
+
+   ""正在等待鄧不力多的魔法指示"",
+
+   ""貓頭鷹迷路了"",
+
+   ""貓頭鷹正在休息"",
+
+   ""咆嘯信已送達"",
+
+   ""信件被迫返回魔法部"",
+
+   ""信件已被食死徒攔截"",
+
+   ""信件仍待在隱形信箱中"",
+
+   ""已送達學院，正在尋找正確的宿舍門牌"",
+
+   ""已轉交給尼可勒梅的時間轉換器管理員"",
+
+   ];",Protocol Buffers 建議使用 lower_snake_case 命名格式，底線應用於單詞之間分隔，底線不能作為欄位名稱的開頭或結尾，也不能連續使用多個底線，例如 \_username 或 user\_\_name，不正確的底線命名可能導致編譯錯誤、程式生成問題或跨語言命名衝突
+陳柏淵,B,A,第四行,string代表一種資料類別(data type)，數字代表了欄位編號(field number)，在protocol buffer我們用它當作序列化(binary serialization)時對應欄位。,會回傳: 查詢信件狀態 (尾碼 XXX): 信件不存在,"""咆嘯信已送達""",使用底線(underscore)命名不會有任何變化
+陳楷璿,B,A,proto 中的 package 在 server 第 106 行用於建立 gRPC 伺服器，在 client 中的第 6 到 9 行用於建立 gRPC client 實例。,表示文字欄位，等號後面的數字是 tag number，用來標記該欄位在傳輸時的識別碼。,找不到時回傳「查詢信件狀態 (尾碼 xxx): 信件不存在」，xxx 為任何傳入的值。,"'咆嘯信已送達',",proto 中可以使用底線命名，但在不同的語言中會被轉換成符合該語言慣例的格式：js、python 保留底線，go 轉為駝峰命名。
+陳炫霖,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;在server跟client都一樣,string 是字串/文字的資料類型；等號後數字是標籤，用來將資料轉換成二進位格式（序列化）。,"會回傳錯誤訊息 ""查詢信件狀態(尾號 xxx) 找不到該信件""，在 console ""查詢信件狀態 (尾碼 xxx): 信件不存在""",咆嘯信已送達,"將response改成有'_',response結果：
+
+查詢信件狀態(尾號 016):undefined
+
+學生: undefined
+
+學院: undefined
+
+可能是因為在JavaScript是Camel Case,轉換間會出現問題"
+陳竣哲,B,A,第4行,表示欄位的資料型別，用來傳字串;等號後面的數字是用來標示欄位的，去代表資料的唯一識別碼（次序去分辨）。,查詢信件狀態(尾號 XXX) 找不到該信件;變化就是尾號數字不同,咆嘯信已送達,可能要看對目標語言有甚麼限制(保留字、命名規範...)會根據語言轉成目標格式
+陳良鈺,B,A,第四行，const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 為資料型態，而後方的數字是編號(tag number),查詢信件狀態 (尾碼 xxx): 信件不存在,查詢信件狀態 (尾碼 114): 咆嘯信已送達,在某些語言中(像是javascript)，會自動將底線轉換為駝峰式命名，例如pickup_code會直接轉為pickupCode，因此在proto中直接用駝峰式命名的慣例比較好一點
+陳若庭,B,A,第4⾏,string 代表型別，數字代表序號，用來序列化,找不到該信件，client 的 response 變成 undefined，需處理err,咆嘯信已送達,proto-loader 預設會把底線轉換成 camelCase 導致程式因為參數名稱改變而出錯
+陳詠,(B),(A),const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,"string 是datatype,等號後的數字是field tag，也就是唯一標識欄位，而非賦值操作。",查詢信件狀態(尾號 ) 找不到該信件。其特殊之處在於它使用了gRPC的錯誤處理系統，而非僅僅返回一個JavaScript錯誤。,咆嘯信已送達,依然可以正常運作
+陳鎮成,(B),(A),"const packageDefinition = protoLoader.loadSync('owl_post.proto', {});
+
+const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;",string表示後面接的是文字，就是JS的string，數字代表欄位編號，用來傳輸用,假設你查詢不存在的尾號215，會得到一個error，他會寫查詢信件狀態(尾號 215) 找不到該信件,咆嘯信已送達,不會怎麼樣，對應的變數記得也要改就好
+陸人瑋,B,A,在 server.js 和 client.js 的第 4 行：const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost; 實際第一次被使用到算是在server的第 95 行跟client的第 6 行吧，其實我不太確定這個問法我該回到多詳細,string 代表資料型別是字串，後面的數字代表欄位編號，用於訊息序列化時識別欄位。,會回傳一個error，server會寫信件不存在，client會寫找不到該信件，不會發光...,"""咆嘯信已送達""",底線命名會自動轉換為駝峰式命名(JS)，我常用的Python好像不會變就是了，但這個小知識很酷
+顏聖峰,(B),(A),const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost; 。在proto的package owlpost;,用來儲存後面的文字字串。在二進為序列化的過程，不會直接儲存名字，而是用數字代替，也順便減少了空間浪費。,track方:查詢信件狀態(尾號 xxx) 找不到該信件。 Server方:會寫(尾碼 undefined): 信件不存在,查詢信件狀態(尾號 xx4)：咆嘯信已送達,還是可以使用的。但可能導致不同程式的語言的命名的風格不同。
+黃科寯,B,A,第4行。const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 代表一個用於儲存文字的字串資料類型；等號後面的數字是欄位的唯一標籤號碼，用於二進制編碼和支援架構演進。,"""查詢信件狀態(尾號 XXX) 找不到該信件""","""查詢信件狀態(尾號 XX4)：咆嘯信已送達""",語法上允許，但違反了 Google Protobuf Style Guide 的建議。程式碼生成可能不一致或不符合目標語言慣例
+黃筠,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 是資料型別，代表文字字串，等號後的數字是 field number欄位順序,"callback({
+
+    code: grpc.status.NOT_FOUND,
+
+    details: ""找不到該信件""
+
+});
+
+Client 端收到時會在 err 中取得錯誤訊息，可以從 err.details 顯示 ""找不到該信件""","""咆嘯信已送達""",不會報錯
+黃茂勛,B,A,"client與sever中的第4行: ""const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;""",string： 表示一個文字字串的資料型別，用來儲存文字資料。等號後的數字：為「欄位編號」（field number），在二進位序列化格式中用來唯一標識每個欄位，這些數字對應到每個欄位，並在序列化與反序列化時發揮關鍵作用。,"該函式會利用 gRPC 的錯誤機制來回傳一個錯誤物件 ""{ code: grpc.status.NOT_FOUND, details: ""找不到該信件""}""，並且使用 callback(error) 的方式來回傳錯誤，表示查詢失敗","""咆嘯信已送達""",如果在型別命名時使用底線，雖然不會導致編譯錯誤，但生成程式碼時（例如 Java、Go 或 C++ 等語言的對應類型）會自動將這些名稱轉換成CamelCase命名，這可能導致在 proto 中定義的名稱與最終產生的程式碼中的名稱不一致，進而引起混淆或命名上的意外衝突。
+黃蓉容,B,A,server 和 client 的第 4 行：const owlPostProto = grpc.loadPackageDefinition(...).owlpost,string 代表字串，數字是欄位編號，用來讓 Protobuf 序列化資料時能壓縮又對得起來,回傳 NOT_FOUND，client 會顯示「查詢信件狀態(尾號 XXX) 找不到該信件」,咆嘯信已送達,不會錯，但會被轉成 camelCase，例如 pickup_code → pickupCode
+黃顥霆,B,A,const owlPostProto = grpc.loadPackageDefinition(packageDefinition).owlpost;,string 表示字串型別；等號後的數字是欄位編號，用於序列化與相容性管理,"若找不到信件，trackLetter 會回傳錯誤，內容含 grpc.status.NOT_FOUND 及 ""找不到該信件""","若追蹤碼最後一碼為 4，信件狀態為 ""咆嘯信已送達""",使用底線 _ 命名會導致編譯錯誤
+龔俐恬,B,A,第4行,string代表的是這個欄位的型態，而後面的數字代表的是欄位編號,server會回傳grpc.status.NOT_FOUND表示找不到請求的資源,"""咆嘯信已送達""",不會發生什麼事
