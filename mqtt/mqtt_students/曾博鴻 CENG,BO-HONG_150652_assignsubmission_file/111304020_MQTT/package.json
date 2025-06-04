@@ -1,0 +1,8 @@
+{
+  "name": "mqttlab",
+  "version": "1.0.0",
+  "dependencies": {
+    "mqtt": "*",
+    "mqttlab": "file:"
+  }
+}
