@@ -2,12 +2,7 @@ import os
 import csv
 
 hw_dir = "./mqtt_students"
-output_path = "hw_mqtt.csv"
 target_file = "game.js"
-
-with open(output_path, mode='w', newline='') as file:
-    # writer = csv.writer(file)
-    pass
 
 for stud_dir in os.listdir(hw_dir):
     stud_name = stud_dir.split(' ')[0]
