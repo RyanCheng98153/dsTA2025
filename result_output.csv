@@ -13,7 +13,7 @@ solution,"console.log(`寄送信件給${call.request.studentName},學院:${house
 吳岱芸,"console.log(`寄送信件給<${studentName}>,學院:${house},追蹤碼:${tracking_id}`)","callback(null,{studentName:studentName,house:house,trackingId:tracking_id})",Correct,Correct,Correct,Correct,Checked
 吳武峰,Correct,Correct,Correct,rpcsendLetter(LetterRequest)returns(LetterResponse),Correct,Correct,Checked
 吳珮嘉,"console.log(`寄送信件給${studentName},學院:${house},追蹤碼:${tracking_id}`)","callback(null,{studentName:studentName,house:house,trackingId:tracking_id})",Correct,Correct,Correct,Correct,Checked
-周映辰,,"console.log(`寄送信件給${call.request.studentName},學院:${house},追蹤碼:${tracking_id}`)",Correct,Correct,Correct,stringstudentName=1//該信件所屬學生stringhouse=2//學院stringstatus=3//信件目前狀態,Checked
+周映辰,Correct,Correct,Correct,Correct,Correct,stringstudentName=1//該信件所屬學生stringhouse=2//學院stringstatus=3//信件目前狀態,Checked
 唐湘怡,Correct,Correct,Correct,Correct,Correct,Correct,Checked
 嚴聲遠,Correct,Correct,Correct,Correct,Correct,stringstatus=1stringstudentName=2stringhouse=3,Checked
 尤敏米茲夠,"console.log(`寄送信件給${studentName},學院:${house},追蹤碼:${tracking_id}`)","if(letters[tracking_id]){callback(null,{studentName:letters[tracking_id].student,house:letters[tracking_id].house,trackingId:tracking_id})}",Correct,Correct,Correct,Correct,Checked

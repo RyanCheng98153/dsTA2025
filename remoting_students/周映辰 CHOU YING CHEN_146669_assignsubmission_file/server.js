@@ -21,6 +21,8 @@ function sendLetter(call, callback) {
     // Hint: 可以使用 call.request.<變數名稱> 來取得來自 client 的變數，變數名稱可以參考 proto 檔案中的定義。
     
     // ==== 請完成實作 (以下) ==== 
+
+    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
     
     // ==== 請完成實作 (以上) ==== 
 
@@ -51,8 +53,7 @@ function sendLetter(call, callback) {
     // <變數名稱>可以參考 proto 檔案中的定義。
 
     // ==== 請完成實作 (以下) ====
-    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
-
+    
     callback(null, {
         studentName: call.request.studentName,
         house: house,

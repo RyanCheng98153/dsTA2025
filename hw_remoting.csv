@@ -166,9 +166,8 @@ solution,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${h
 [nl]        console.log(`追蹤碼: ${response.trackingId}`);",rpc SendLetter (LetterRequest) returns (LetterResponse);,string pickupCode = 1;,"string studentName = 1;
 [nl]  string house = 2;
 [nl]  string status = 3;"
-周映辰,,"console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
-[nl]
-[nl]    callback(null, {
+周映辰,"[nl]    console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);
+[nl]","[nl]    callback(null, {
 [nl]        studentName: call.request.studentName,
 [nl]        house: house,
 [nl]        trackingId: tracking_id
