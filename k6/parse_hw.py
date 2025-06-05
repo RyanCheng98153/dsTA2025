@@ -1,8 +1,8 @@
 import os
 import csv
 
-hw_dir = "./mqtt_students"
-target_file = "game.js"
+hw_dir = "./k6_students"
+target_file = "client-basic.js"
 
 for stud_dir in os.listdir(hw_dir):
     stud_name = stud_dir.split(' ')[0]
