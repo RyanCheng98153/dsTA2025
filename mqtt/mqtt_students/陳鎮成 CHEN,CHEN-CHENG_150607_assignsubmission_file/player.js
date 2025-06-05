@@ -7,8 +7,12 @@ const attack_value = 715;
 client.on('connect', () => {
   console.log(`${PLAYER_NAME} 已連線至 MQTT broker\n`);
 
+  // === 請實作這裡(以下) ===
+  
   client.subscribe('battle/action');
   client.subscribe('battle/online'); 
+
+  // === 請實作這裡(以上) ===
 
   // 發佈上線通知，這通常會觸發 Boss 的 "遊戲開始" 訊息
   client.publish('battle/online', `online:${PLAYER_NAME}`);
@@ -40,15 +44,20 @@ client.on('message', (topic, message) => {
     // 或者，如果上面連接後立即攻擊的邏輯被啟用，這個 if 區塊可能就不需要發動攻擊了。
     // 為了保持與你原始碼相似的邏輯，暫且保留攻擊觸發：
     console.log(`(收到 ${topic} 訊息後) ${PLAYER_NAME} 對 Boss 發起攻擊，造成 ${attack_value} 傷害`);
+    
+    // === 請實作這裡(以下) ===
     const attackAction = {
       to: 'Boss',         
       from: PLAYER_NAME,  
       damage: attack_value 
     };
     client.publish('battle/action', JSON.stringify(attackAction));
+    // === 請實作這裡(以上) ===
   } 
   // 處理來自 'battle/action' 的訊息 (Boss 的狀態更新 或 自己的攻擊回顯)
-  else if (topic === 'battle/action') { 
+  
+  // === 請實作這裡(以下) ===
+  if (topic === 'battle/action') { 
     try {
       const receivedData = JSON.parse(msg); // 使用更通用的名稱
 
@@ -89,4 +98,5 @@ client.on('message', (topic, message) => {
       console.error("處理 'battle/action' 訊息時發生錯誤:", msg, error); 
     }
   }
+  // === 請實作這裡(以上) ===
 });

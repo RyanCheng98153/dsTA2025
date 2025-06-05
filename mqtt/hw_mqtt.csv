@@ -1,0 +1,2660 @@
+name,player1,player2,player3
+solution,[nl]  client.subscribe('battle/action');[nl]  client.subscribe('battle/online');[nl],"[nl]    const payload = {[nl]      from: PLAYER_NAME,[nl]      to: 'Boss',[nl]      damage: attack_value[nl]    };[nl]    client.publish('battle/action', JSON.stringify(payload));[nl]",[nl]  if (topic === 'battle/action') {[nl]    [nl]    const roundInfo = JSON.parse(msg);[nl]    if (roundInfo.round !== undefined) {[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}[nl]`);[nl]      // 根據回合數和血量決定是否結束遊戲或繼續[nl]      if (roundInfo.boss_hp <= 0) {[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);[nl]      }[nl]      client.end(); // 結束 MQTT 連線[nl]    }[nl]  }[nl]
+何嘉柚,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const Info = {
+[nl]      to: 'Boss',
+[nl]      from: PLAYER_NAME,
+[nl]      damage: attack_value
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action',JSON.stringify(Info));
+[nl]    
+[nl]","if(topic === 'battle/action'){
+[nl]    const action = JSON.parse(message);
+[nl]    const round = action.round;
+[nl]    const boss_hp = action.boss_hp;
+[nl]    if(round != undefined){
+[nl]      console.log(`[ 回合 ${round} ]: Boss 剩餘血量 ${boss_hp}\n`)
+[nl]      if(boss_hp <= 0){
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!\n`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+余采嬙,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackData = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(attackData));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  if (topic === 'battle/action') {
+[nl]    const bossUpdateMsg = JSON.parse(msg);
+[nl]
+[nl]    if (bossUpdateMsg.round !== undefined) {
+[nl]      console.log(`[ 回合 ${bossUpdateMsg.round} ]: Boss 剩餘血量 ${bossUpdateMsg.boss_hp}`);
+[nl]
+[nl]      if (bossUpdateMsg.boss_hp <= 0) {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();  // 結束MQTT連線
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+傅子珈,"client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attack = {
+[nl]      damage: `${attack_value}`,
+[nl]      to: 'Boss',
+[nl]      from: `${PLAYER_NAME}`,
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attack));","if (topic === 'battle/action') {
+[nl]    const data = JSON.parse(msg);
+[nl]    const round = data.round;
+[nl]    const boss_hp = data.boss_hp;
+[nl]    
+[nl]    if (round != undefined) {
+[nl]      console.log(`[ 回合 ${round} ]: Boss 剩餘血量 ${boss_hp}`);
+[nl]      
+[nl]      if (boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      }
+[nl]      client.end(); 
+[nl]    }
+[nl]  }
+[nl]  
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+傅鈺婷,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","publish_action = {
+[nl]      from: `${PLAYER_NAME}`,
+[nl]      to: ""Boss"",
+[nl]      damage: `${attack_value}`
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(publish_action));
+[nl]    return;","const action = JSON.parse(msg);
+[nl]  if (topic === 'battle/action') {
+[nl]    if (action.round != undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      }
+[nl]      client.end(); 
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+劉修維,,,
+劉楚婷,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","const attackInfo = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: ""Boss"",
+[nl]      damage: attack_value
+[nl]    }
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(attackInfo));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if(topic === 'battle/action'){
+[nl]    const info = JSON.parse(msg);
+[nl]    if(info.round != undefined){
+[nl]      console.log(`[ 第 ${info.round} 回合 ]`);
+[nl]      console.log(`Boss 剩餘血量 ${info.boss_hp}`);
+[nl]
+[nl]      //boss鼠掉
+[nl]      if(info.boss_hp <= 0){
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]      //繼續攻擊
+[nl]      else{
+[nl]        const attackInfo = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: ""Boss"",
+[nl]          damage: attack_value
+[nl]        }
+[nl]
+[nl]        client.publish('battle/action', JSON.stringify(attackInfo));
+[nl]      }
+[nl]    }
+[nl]  }"
+劉白,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attack = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attack));","if(topic === 'battle/action'){
+[nl]    try{
+[nl]      const data = JSON.parse(msg);
+[nl]
+[nl]      if(data.round !== undefined && data.boss_hp !== undefined){
+[nl]        console.log(`\n[ 第 ${data.round} 回合 ]: Boss 剩餘血量 ${data.boss_hp}`);
+[nl]
+[nl]        if(data.boss_hp <= 0){
+[nl]          console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          client.end();
+[nl]        }else{
+[nl]          //ATTACK下一回合
+[nl]          setTimeout(() => {
+[nl]            const attack = {
+[nl]              from: PLAYER_NAME,
+[nl]              to: 'Boss',
+[nl]              damage: attack_value
+[nl]            };
+[nl]            client.publish('battle/action', JSON.stringify(attack));
+[nl]          }, 1000);
+[nl]        }
+[nl]      }
+[nl]    } catch (err){ console.warn('收到非 JSON 或錯誤格式的訊息，已略過：', msg); }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+劉秉治,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","[nl]    const attackInfo = {
+[nl]      to : 'Boss',
+[nl]      from : PLAYER_NAME,
+[nl]      damage : attack_value
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(attackInfo));
+[nl]","[nl]  if (topic === 'battle/action') 
+[nl]  {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined)
+[nl]    {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]
+[nl]      if (action.boss_hp <= 0) 
+[nl]      {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]
+[nl]      client.publish('battle/online');
+[nl]    }
+[nl]  }
+[nl]
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+吳唯禎,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackmsg = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(attackmsg));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if(topic === 'battle/action'){
+[nl]    const response = JSON.parse(msg);
+[nl]    if(response.round !== undefined && response.boss_hp !== undefined){
+[nl]      console.log(`[ 回合 ${response.round} ]: Boss 剩餘血量 ${response.boss_hp}`);
+[nl]      if(response.boss_hp <= 0){
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗!!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]"
+吳姵萱,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackInfo = {
+[nl]		to: ""Boss"",
+[nl]		damage: attack_value,
+[nl]		from: PLAYER_NAME
+[nl]	};
+[nl]	client.publish('battle/action', JSON.stringify(attackInfo));","if(topic ==='battle/action'){
+[nl]	const reply = JSON.parse(msg);
+[nl]	if(reply.round != undefined){
+[nl]		console.log(`[ 回合 ${reply.round} ]: Boss 剩餘血量 ${reply.boss_hp}`);
+[nl]	}
+[nl]	if(reply.boss_hp <=0 ){
+[nl]		console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);	
+[nl]		client.end();
+[nl]	}
+[nl]	const attackInfo = {
+[nl]		to: ""Boss"",
+[nl]		damage: attack_value,
+[nl]		from: PLAYER_NAME
+[nl]	};
+[nl]  }
+[nl]  
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+吳岱芸,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","const payload = {
+[nl]		  to: 'Boss',
+[nl]		  from: PLAYER_NAME,
+[nl]  		damage: attack_value
+[nl]		}
+[nl]   	client.publish('battle/action', JSON.stringify(payload));
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]	if (topic === 'battle/action'){
+[nl]		const data = JSON.parse(msg);
+[nl]		const round = data.round
+[nl]		const boss_hp = data.boss_hp;
+[nl]		
+[nl]		if (round !== undefined) {
+[nl]      	console.log(`[ 回合： ${round} ]: Boss 剩餘血量 ${boss_hp}`);
+[nl]      	if (boss_hp <= 0) {
+[nl]        	console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        	client.end();
+[nl]      }
+[nl]    }
+[nl]	}"
+吳珮嘉,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackInfo = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackInfo));
+[nl]    // client.end(); // 結束 MQTT 連線","if (topic === 'battle/action') {
+[nl]    const actionInfo = JSON.parse(msg);
+[nl]    const round = actionInfo.round;
+[nl]    const boss_hp = actionInfo.boss_hp;
+[nl]
+[nl]    if (round !== undefined) {
+[nl]      console.log(`[ 回合 ${round} ]: Boss 剩餘血量 ${boss_hp}`);
+[nl]
+[nl]      if (boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+周映辰,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]
+[nl]","const attack = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(attack));
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if ( topic === 'battle/action') {
+[nl]    const response = JSON.parse(msg);
+[nl]    
+[nl]    if ( response.round !== undefined) {
+[nl]        console.log(`[ 回合 ${response.round} ]: Boss 剩餘血量 ${response.boss_hp}`);
+[nl]        if ( response.boss_hp <= 0){
+[nl]          console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`)
+[nl]          client.end(); // 結束 MQTT 連線
+[nl]        }
+[nl]        else {
+[nl]          // 如果 Boss 沒死，自動再次攻擊
+[nl]          const attack = {
+[nl]            from: PLAYER_NAME,
+[nl]            to: 'Boss',
+[nl]            damage: attack_value
+[nl]          };
+[nl]          client.publish('battle/action', JSON.stringify(attack));
+[nl]        }
+[nl]
+[nl]      }
+[nl]
+[nl]  }
+[nl]"
+唐湘怡,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackAction = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackAction));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action'){
+[nl]  	const action = JSON.parse(msg);
+[nl]    if(action.round !== undefined){
+[nl]	  console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]	  if(action.boss_hp <=0){
+[nl]	    console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]		client.end();
+[nl]	  }
+[nl]	  else{
+[nl]	    console.log(`${PLAYER_NAME} 對 Boss 發起攻擊，造成 ${attack_value} 傷害`);
+[nl]	  	const nextAttack = {
+[nl]          from: PLAYER_NAME,
+[nl]    	  to: 'Boss',
+[nl]          damage: attack_value
+[nl]        };
+[nl]	    client.publish('battle/action', JSON.stringify(nextAttack));
+[nl]	  }
+[nl]	}
+[nl]  }"
+嚴聲遠,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const action = {
+[nl]        to: 'Boss',
+[nl]        from: PLAYER_NAME,
+[nl]        damage: attack_value
+[nl]      };
+[nl]    client.publish('battle/action', JSON.stringify(action));","if (topic === 'battle/action') {
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    if (roundInfo.round !== undefined) {
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]      if (roundInfo.boss_hp <= 0) {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+尤敏米茲夠,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","[nl]    const attackInfo = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(attackInfo));
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if (topic == 'battle/action') {
+[nl]    const round = JSON.parse(msg);
+[nl]
+[nl]    if (round.round != undefined) {
+[nl]      console.log(`[ 回合 ${round.round} ]: Boss 剩餘血量 ${round.boss_hp}`);
+[nl]
+[nl]      if (round.boss_hp <= 0) {
+[nl]        console.log(""恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!"");
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]"
+廖偉哲,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","// 發布攻擊訊息給 Boss
+[nl]    const attackMsg = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackMsg));
+[nl]
+[nl]    return; // 處理完上線訊息就結束這輪","// 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  // ✅ 如果是 Boss 回應的訊息
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    
+[nl]    //判斷是誰發出的action，因為也會收到自己的
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`\n[ 第 ${action.round} 回合 ]`);
+[nl]      console.log(`Boss 受到 Player 的攻擊，損失 715 HP，剩餘 HP：${action.boss_hp}`);
+[nl]
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束連線
+[nl]      }
+[nl]      else{
+[nl]        promptAttack();
+[nl]      }
+[nl]    }
+[nl]  }"
+廖安豪,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","[nl]    const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));
+[nl]    return;
+[nl]
+[nl]","[nl]
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+廖家樂,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","if (msg.includes('online')) {
+[nl]      console.log('\n對方玩家在線，遊戲開始！');
+[nl]    }
+[nl]    client.publish('battle/action', JSON.stringify(action));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+張曜麟,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const BOSS_NAME = 'Boss';
+[nl]    // 發送攻擊行動給 boss
+[nl]    const action = {
+[nl]      from : PLAYER_NAME,
+[nl]      to : BOSS_NAME,
+[nl]      damage : attack_value,
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));
+[nl]    // 輸出攻擊行動
+[nl]    console.log(`發送攻擊行動 : ${JSON.stringify(action)}`);","const BOSS_NAME = 'Boss';
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action'){
+[nl]    const info = JSON.parse(msg);
+[nl]    if (info.round !== undefined){
+[nl]      console.log(`[ 第 ${info.round} 回合] : Boss 剩餘血量 ${info.boss_hp}`);
+[nl]      if (info.boss_hp <= 0){
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      } else {  // Boss 還活著
+[nl]        console.log(`\nBoss仍然存活!`);
+[nl]        setTimeout(()=>{
+[nl]          const next_action = {
+[nl]            from : PLAYER_NAME,
+[nl]            to : BOSS_NAME,
+[nl]            damage : attack_value,
+[nl]          };
+[nl]          client.publish('battle/action', JSON.stringify(next_action));
+[nl]          console.log(`\n繼續攻擊！ 發送攻擊行動 : ${JSON.stringify(next_action)}`);
+[nl]        }, 2000);  // 2秒後繼續攻擊
+[nl]      }
+[nl]    }
+[nl]  }"
+張芸禎,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    try {
+[nl]      const roundInfo = JSON.parse(msg);
+[nl]
+[nl]      if (roundInfo.round !== undefined) {
+[nl]        console.log(`[ 第 ${roundInfo.round} 回合 ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]
+[nl]        if (roundInfo.boss_hp <= 0) {
+[nl]          console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          client.end();
+[nl]        } else {
+[nl]          // Boss 還活著，繼續攻擊
+[nl]          setTimeout(() => {
+[nl]            const action = {
+[nl]              from: PLAYER_NAME,
+[nl]              to: 'Boss',
+[nl]              damage: attack_value
+[nl]            };
+[nl]            client.publish('battle/action', JSON.stringify(action));
+[nl]          }, 1000); // 1秒後再次攻擊
+[nl]        }
+[nl]      }
+[nl]    } catch (e) {
+[nl]      // 忽略非 JSON 格式的訊息
+[nl]    }
+[nl]  }
+[nl]"
+曾博鴻,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","const attack = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attack));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if (topic === 'battle/action') {
+[nl]    try {
+[nl]      const data = JSON.parse(msg);
+[nl]      if (data.round !== undefined) {
+[nl]        console.log(`[ 回合 ${data.round} ]: Boss 剩餘血量 ${data.boss_hp}`);
+[nl]
+[nl]        if (data.boss_hp <= 0) {
+[nl]          console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          client.end();
+[nl]        } else {
+[nl]          // 發動下一次攻擊
+[nl]          console.log(`${PLAYER_NAME} 再次攻擊 Boss，造成 ${attack_value} 傷害`);
+[nl]          const nextAttack = {
+[nl]            from: PLAYER_NAME,
+[nl]            to: 'Boss',
+[nl]            damage: attack_value
+[nl]          };
+[nl]          client.publish('battle/action', JSON.stringify(nextAttack));
+[nl]        }
+[nl]      }
+[nl]    } catch (err) {
+[nl]      // 忽略非 JSON 格式訊息
+[nl]    }
+[nl]  }
+[nl]"
+曾奕誠,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","let atk = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }
+[nl]    client.publish('battle/action', JSON.stringify(atk));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]      else {
+[nl]        let atk = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value
+[nl]        }
+[nl]        client.publish('battle/action', JSON.stringify(atk));
+[nl]      }
+[nl]    }
+[nl]  }"
+李冠蓁,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }
+[nl]    client.publish('battle/action', JSON.stringify(action));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  
+[nl]  if(topic === 'battle/action'){
+[nl]    const action = JSON.parse(msg);
+[nl]    if(action.round !== undefined){
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]    }
+[nl]
+[nl]    if(action.boss_hp > 0){
+[nl]      console.log(`${PLAYER_NAME} 對 Boss 發起攻擊，造成 ${attack_value} 傷害`);
+[nl]      const action = {
+[nl]        from: PLAYER_NAME,
+[nl]        to: 'Boss',
+[nl]        damage: attack_value
+[nl]      }
+[nl]      client.publish('battle/action', JSON.stringify(action));
+[nl]    }
+[nl]
+[nl]    if(action.boss_hp <= 0){
+[nl]      console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      client.end();
+[nl]    }
+[nl]  }"
+李昕璇,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));
+[nl]    autoAttack();","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    let roundInfo;
+[nl]    try {
+[nl]      roundInfo = JSON.parse(msg);
+[nl]    } catch (err) {
+[nl]      return; 
+[nl]    }
+[nl]
+[nl]    
+[nl]    if (roundInfo.round !== undefined) {
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]
+[nl]      
+[nl]      if (roundInfo.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        isBossAlive = false;
+[nl]        client.end(); 
+[nl]      }
+[nl]    }
+[nl]  }"
+李昕融,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe(""battle/action"");
+[nl]  client.subscribe(""battle/online"");","const attackInfo = {
+[nl]      to: ""Boss"",
+[nl]      from: `${PLAYER_NAME}`,
+[nl]      damage: `${attack_value}` 
+[nl]    };
+[nl]
+[nl]    client.publish(""battle/action"", JSON.stringify(attackInfo));
+[nl]    return;","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  const action = JSON.parse(msg);
+[nl]  if (topic === ""battle/action"") {
+[nl]    const bossHealthPoint = action.boss_hp;
+[nl]    const round = action.round;
+[nl]    if (round != undefined) {
+[nl]      console.log(`輸出內容: [ 回合 ${round} ]: Boss 剩餘血量 ${bossHealthPoint}`);
+[nl]      if (bossHealthPoint <= 0) {
+[nl]        console.log(`輸出內容: 恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      }
+[nl]      client.end();
+[nl]    }
+[nl]  }"
+李柏漢,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attack = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attack));
+[nl]","if (topic === 'battle/action') {
+[nl]    // 解析 Boss 傳來的回合與血量
+[nl]    const action = JSON.parse(msg);
+[nl]    const round = action.round;
+[nl]    const boss_hp = action.boss_hp;
+[nl]
+[nl]    if (round !== undefined) {
+[nl]      console.log(`[ 第 ${round} 回合 ]: Boss 剩餘血量 ${boss_hp}`);
+[nl]    }
+[nl]
+[nl]    if (boss_hp <= 0) {
+[nl]      console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      client.end(); // 結束 MQTT 連線
+[nl]    } else {
+[nl]      if (boss_hp > 0) {
+[nl]        console.log(`${PLAYER_NAME} 再次揮劍攻擊，造成 ${attack_value} 傷害`);
+[nl]        const attack = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value
+[nl]        };
+[nl]        client.publish('battle/action', JSON.stringify(attack));
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+李胤寬,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attack = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attack));","[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();   //結束
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+李若綺,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","[nl]    const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));    
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if (topic === 'battle/action') {
+[nl]    const status = JSON.parse(msg);
+[nl]    if (status.round !== undefined) {
+[nl]      console.log(`[ 回合 ${status.round} ]: Boss 剩餘血量 ${status.boss_hp}`);
+[nl]      if (status.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }  
+[nl]"
+李采萱,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","client.publish('battle/action', JSON.stringify({
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }));
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]    }
+[nl]  }"
+林冠儀,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","client.publish('battle/action', JSON.stringify({
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }));","else if (topic === 'battle/action') {
+[nl]    // 解析 Boss 傳來的回合數與血量
+[nl]    const msg = JSON.parse(message);
+[nl]    // 輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]    if (msg.round !== undefined) {
+[nl]      console.log(`[ 回合${msg.round} ]: Boss 剩餘血量 ${msg.boss_hp}`);
+[nl]      if (msg.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+林叡啟,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","// 2) 建立 action 物件
+[nl]    const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(action));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  if (topic === 'battle/action'){
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    const { round, boss_hp } = roundInfo;
+[nl]
+[nl]    if (typeof round !== 'undefined') {
+[nl]      console.log(`[ 回合 ${round} ]: Boss 剩餘血量 ${boss_hp}`);
+[nl]      if (boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+林子葳,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","const BOSS_NAME = 'Boss';
+[nl]    const attackMsg = {
+[nl]      to: BOSS_NAME,
+[nl]      from: PLAYER_NAME,
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackMsg));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  if(topic === 'battle/action'){
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    if(roundInfo.round !== undefined){
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]      if(roundInfo.boss_hp <= 0){
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]      else {
+[nl]        console.log(`${PLAYER_NAME} 對 Boss 再次發動攻擊，造成 ${attack_value} 傷害`);
+[nl]        const BOSS_NAME = 'Boss';
+[nl]        const attackMsg = {
+[nl]          to: BOSS_NAME,
+[nl]          from: PLAYER_NAME,
+[nl]          damage: attack_value
+[nl]        };
+[nl]        client.publish('battle/action', JSON.stringify(attackMsg));
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+林明輝,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]  // 可參考 Game.js","const attackInfo = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackInfo));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  if (topic === 'battle/action') {
+[nl]  //  解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]    const action = JSON.parse(msg);
+[nl]  //  if 傳回來的回合數不等於 undefined :
+[nl]    if (action.round !== undefined) {
+[nl]  //  輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]  //  if Boss 剩餘血量 <= 0 :
+[nl]      if (action.boss_hp <= 0) {
+[nl]  //  輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]  //  結束 MQTT 連線
+[nl]        client.end();
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+林韋宏,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","client.publish('battle/action', JSON.stringify({
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 第 ${action.round} 回合 ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      }
+[nl]      client.end(); // 結束 MQTT 連線
+[nl]    }
+[nl]  }"
+柯侑易,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","[nl]    const attackAction = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(attackAction));
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    const round = action.round;
+[nl]    const hp = action.boss_hp;
+[nl]
+[nl]    if (round != undefined) {
+[nl]      console.log (`[ 回合 ${round} ]: Boss 剩餘血量 ${hp}`);
+[nl]    }
+[nl]
+[nl]    if (hp <= 0) {
+[nl]      console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      client.end();
+[nl]    }
+[nl]  }
+[nl]"
+楊宗儒,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","let attack = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }
+[nl]    client.publish('battle/action', JSON.stringify(attack));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      if (action.round != 1) {
+[nl]        console.log(`${PLAYER_NAME} 對 Boss 發起攻擊，造成 ${attack_value} 傷害`);
+[nl]      }
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]      else {
+[nl]        let attack = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value
+[nl]        }
+[nl]        client.publish('battle/action', JSON.stringify(attack));
+[nl]      }
+[nl]    }
+[nl]  }"
+楊琇茹,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackInfo = {
+[nl]      from:PLAYER_NAME,
+[nl]      to:'Boss',
+[nl]      damage:attack_value,
+[nl]    }
+[nl]    client.publish('battle/action',JSON.stringify(attackInfo));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  if (topic === 'battle/action') {
+[nl]    const response = JSON.parse(msg);
+[nl]    const round = response.round;
+[nl]    const boss_hp = response.boss_hp;
+[nl]    if (round !== undefined) {
+[nl]      console.log(`[ 回合 ${round} ]: Boss 剩餘血量 ${boss_hp}`);
+[nl]      if (boss_hp > 0) {
+[nl]        const attackInfo = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value,
+[nl]        };
+[nl]        setTimeout(() => {
+[nl]          client.publish('battle/action', JSON.stringify(attackInfo));
+[nl]        }, 800);
+[nl]      } else {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+沈思妤,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(action));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]    }
+[nl]  }"
+王子翔,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe(""battle/action"");
+[nl]  client.subscribe(""battle/online"");","const attackAction = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: ""Boss"",
+[nl]      damage: attack_value,
+[nl]    };
+[nl]    client.publish(""battle/action"", JSON.stringify(attackAction));","if (topic === ""battle/action"") {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]    client.end(); // 確保每次打完Boss可以直接斷線
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+莊羽媗,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackMessage = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackMessage));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 第 ${action.round} 回合 ]`);
+[nl]      console.log(`Boss 受到 ${PLAYER_NAME} 的攻擊，損失 ${attack_value} HP，剩餘 HP：${action.boss_hp}`);
+[nl]      
+[nl]      if (action.boss_hp > 0) {
+[nl]        // 繼續攻擊下一回合
+[nl]        const attackMessage = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value
+[nl]        };
+[nl]        client.publish('battle/action', JSON.stringify(attackMessage));
+[nl]      } else {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  
+[nl]"
+蔡景紘,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","client.publish('battle/action', JSON.stringify({from:PLAYER_NAME,to:'Boss',damage:attack_value}));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined){
+[nl]      console.log('[ 回合 '+action.round+' ]: Boss 剩餘血量 '+action.boss_hp);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]    }
+[nl]  }"
+蔡汶璋,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]"
+蔡詠丞,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","[nl]    const action = {
+[nl]      to : 'Boss',
+[nl]      damage : attack_value,
+[nl]      from : PLAYER_NAME
+[nl]    }
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(action));
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if(topic === 'battle/action'){
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    if(roundInfo.round!=null){
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]      if (roundInfo.boss_hp <= 0) {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); 
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]"
+蕭名容,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe(""battle/action"");
+[nl]  client.subscribe(""battle/online"");
+[nl]","const attackInfo = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: ""Boss"",
+[nl]      damage: attack_value,
+[nl]    };
+[nl]
+[nl]    client.publish(""battle/action"", JSON.stringify(attackInfo));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if (topic === ""battle/action"") {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(
+[nl]        `[ 第 ${action.round} 回合 ]: Boss 剩餘血量 ${action.boss_hp}`
+[nl]      );
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]"
+蕭孟汝,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackMsg = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackMsg));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]
+[nl]    if (typeof action.round !== 'undefined' && typeof action.boss_hp !== 'undefined') {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      } else {
+[nl]        setTimeout(() => {
+[nl]          console.log(`${PLAYER_NAME} 對 Boss 發起攻擊，造成 ${attack_value} 傷害`);
+[nl]          const attackMsg = {
+[nl]            from: PLAYER_NAME,
+[nl]            to: 'Boss',
+[nl]            damage: attack_value
+[nl]          };
+[nl]          client.publish('battle/action', JSON.stringify(attackMsg));
+[nl]        }, 1000);
+[nl]      }
+[nl]    }
+[nl]  }"
+許景筑,"client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }
+[nl]    
+[nl]    // 發送更新給 Boss，告訴 Boss 這是第幾回合以及 Boss 剩餘多少血量
+[nl]    client.publish('battle/action', JSON.stringify(action));","if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]
+[nl]    if (action.boss_hp <= 0) {
+[nl]      action.boss_hp = 0; // 確保血量不會小於 0
+[nl]    }
+[nl]    // 解析 Boss 傳來的回合數與血量
+[nl]    if (action.round != undefined) {
+[nl]      console.log(`[回合 ${action.round}]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]    }
+[nl]    
+[nl]    if (action.boss_hp <= 0) {
+[nl]      console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      client.end(); // 結束 MQTT 連線
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+謝妍晞,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","client.publish('battle/action', JSON.stringify({
+[nl]      to: 'Boss',
+[nl]      from: PLAYER_NAME,
+[nl]      damage: attack_value
+[nl]    }));","client.publish('battle/action', JSON.stringify({
+[nl]      to: 'Boss',
+[nl]      from: PLAYER_NAME,
+[nl]      damage: attack_value
+[nl]    }));"
+賴元智,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackBoss = {
+[nl]      damage: attack_value,
+[nl]      to: ""Boss"",
+[nl]      from: PLAYER_NAME
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackBoss));","if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`)
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`)
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+郭彥頡,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","[nl]    const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action))
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  if(topic === 'battle/action'){
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    if(roundInfo.round != undefined) {
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]      if(roundInfo.boss_hp <= 0){
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+金娜伶,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]
+[nl]  // 연결되면 토픽 2개 구독
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');
+[nl]","[nl]    const attackInfo = { // 실제 공격 넣는 부분
+[nl]      to : 'Boss',
+[nl]      damage : attack_value,
+[nl]      from : PLAYER_NAME
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(attackInfo))
+[nl]
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的) 보스가 보내온 라운드 수랑 체력을 해석?
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if (topic === 'battle/action'){
+[nl]    const action = JSON.parse(msg);
+[nl]    //console.log(action);
+[nl]  
+[nl]    if(action.round != undefined){
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`)
+[nl]      if(action.boss_hp <= 0){
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`)
+[nl]      }
+[nl]    }
+[nl]
+[nl]  }
+[nl]"
+陳奕利,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const actionInfo = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: ""Boss"",
+[nl]      damage: attack_value
+[nl]    }
+[nl]    client.publish(""battle/action"", JSON.stringify(actionInfo));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === ""battle/action"") {
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    if (roundInfo.round != undefined) {
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]      if (roundInfo.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      } else {
+[nl]        const actionInfo = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: ""Boss"",
+[nl]          damage: attack_value
+[nl]        }
+[nl]        client.publish(""battle/action"", JSON.stringify(actionInfo));
+[nl]      }
+[nl]    }
+[nl]  }"
+陳家祥,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackInfo = {
+[nl]      to: 'Boss',
+[nl]      from: PLAYER_NAME,
+[nl]      damage: attack_value
+[nl]    };
+[nl]    
+[nl]    client.publish('battle/action', JSON.stringify(attackInfo));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if (topic === 'battle/action') {
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 回合 ${action.round} ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]"
+陳建銘,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action', (err) => {
+[nl]    if(err){
+[nl]      console.error('subscribe error:', err);
+[nl]    }else{
+[nl]      console.log('subscribed to battle/action');
+[nl]    }
+[nl]  });
+[nl]  client.subscribe('battle/online', (err) => {
+[nl]    if(err){
+[nl]      console.error('subscribe error:', err);
+[nl]    }else{
+[nl]      console.log('subscribed to battle/online');
+[nl]    }
+[nl]  });","const action={
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action',JSON.stringify(action));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if(topic==='battle/action'){
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    if(roundInfo.round !== undefined) {
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`)
+[nl]      if(roundInfo.boss_hp<=0){
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗！！！`)
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }"
+陳昶安,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe([""battle/action"", ""battle/online""]);","console.log(`Boss 在線，遊戲開始！`);
+[nl]    const attack = {
+[nl]      to: ""Boss"",
+[nl]      damage: attack_value,
+[nl]      from: PLAYER_NAME,
+[nl]    };
+[nl]    client.publish(""battle/action"", JSON.stringify(attack));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === ""battle/action"") {
+[nl]    try {
+[nl]      const action = JSON.parse(msg);
+[nl]      if (action.round !== undefined) {
+[nl]        if (action.boss_hp <= 0) {
+[nl]          action.boss_hp = 0;
+[nl]        }
+[nl]
+[nl]        console.log(
+[nl]          `[ 第 ${action.round} 回合 ]: Boss 剩餘血量 ${action.boss_hp}`
+[nl]        );
+[nl]
+[nl]        if (action.boss_hp <= 0) {
+[nl]          console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          client.end();
+[nl]          return;
+[nl]        }
+[nl]
+[nl]        // 持續攻擊直到勝利
+[nl]        const nextAttack = {
+[nl]          to: ""Boss"",
+[nl]          damage: attack_value,
+[nl]          from: PLAYER_NAME,
+[nl]        };
+[nl]        client.publish(""battle/action"", JSON.stringify(nextAttack));
+[nl]      }
+[nl]    } catch (e) {
+[nl]      console.error(""訊息解析錯誤:"", e);
+[nl]    }
+[nl]  }"
+陳柏淵,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]
+[nl]  // 發布線上訊息
+[nl]  client.publish('battle/online', `online:${PLAYER_NAME}`);
+[nl]
+[nl]  // 訂閱 battle/action
+[nl]  client.subscribe('battle/action');
+[nl]
+[nl]  // 發動攻擊
+[nl]  const attack = {
+[nl]    to: 'Boss',
+[nl]    from: PLAYER_NAME,
+[nl]    damage: attack_value
+[nl]  };
+[nl]
+[nl]  // 發布攻擊訊息給 Boss
+[nl]  client.publish('battle/action', JSON.stringify(attack));
+[nl]",return;,"[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    // 第二階段：處理 Boss 回傳血量與回合數
+[nl]    const data = JSON.parse(msg);
+[nl]    if (data.round !== undefined) {
+[nl]      console.log(`\n[ 回合 ${data.round} ]: Boss 剩餘血量 ${data.boss_hp}`);
+[nl]      if (data.boss_hp <= 0) {
+[nl]        console.log(`🎉🎉 恭喜 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      } else {
+[nl]        // 再次發動攻擊
+[nl]        const attack = {
+[nl]          to: 'Boss',
+[nl]          from: PLAYER_NAME,
+[nl]          damage: attack_value
+[nl]        };
+[nl]        client.publish('battle/action', JSON.stringify(attack));
+[nl]      }
+[nl]    }
+[nl]  }"
+陳楷璿,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action')
+[nl]  client.subscribe('battle/online')","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value,
+[nl]    }
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(action))","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  if (topic === 'battle/action') {
+[nl]    const roundInfo = JSON.parse(msg)
+[nl]
+[nl]    if (roundInfo.round !== undefined) {
+[nl]      console.log(
+[nl]        `[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp} ]`
+[nl]      )
+[nl]
+[nl]      if (roundInfo.boss_hp <= 0) {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`)
+[nl]        client.end() // 結束連線
+[nl]      } else {
+[nl]        setTimeout(() => {
+[nl]          client.publish('battle/online', JSON.stringify(action))
+[nl]        }, 1000)
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+陳炫霖,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));
+[nl]    return;","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  if (topic === 'battle/action') {
+[nl]    const info = JSON.parse(msg);
+[nl]    if (info.round !== undefined) {
+[nl]      console.log(`[ 第 ${info.round} 回合 ]`);
+[nl]      console.log(`Boss 受到 ${PLAYER_NAME} 的攻擊，損失 ${attack_value} HP，剩餘 HP：${info.boss_hp}`);
+[nl]  
+[nl]      if (info.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗!!!`);
+[nl]        client.end();
+[nl]      } else {
+[nl]        const nextAttack = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value
+[nl]        };
+[nl]        client.publish('battle/action', JSON.stringify(nextAttack));
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+陳竣哲,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackMsg = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackMsg));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    // 接收由 Boss 發出的回合資訊 (回合數與剩餘血量)
+[nl]    let data;
+[nl]    try {
+[nl]      data = JSON.parse(msg);
+[nl]    } catch(err) {
+[nl]      console.error('無法解析回傳的訊息:', err);
+[nl]      return;
+[nl]    }
+[nl]    // 檢查回傳的訊息中是否包含回合數與 Boss 剩餘血量的資訊
+[nl]    if (data.round !== undefined && data.boss_hp !== undefined) {
+[nl]      console.log(`[ 回合 ${data.round} ]: Boss 剩餘血量 ${data.boss_hp}`);
+[nl]      
+[nl]      // 若 Boss 血量小於等於 0，則顯示擊敗訊息並結束連線
+[nl]      if (data.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }"
+陳良鈺,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe(['battle/action', 'battle/online'], function (err) {
+[nl]    if (err) {
+[nl]      console.log('Subscription error:', err);
+[nl]    } else {
+[nl]      console.log('成功訂閱至主題 battle/action, battle/online');
+[nl]    }
+[nl]  });","const attackStatus = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackStatus));
+[nl]","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  if (topic === 'battle/action'){
+[nl]    const action = JSON.parse(msg);
+[nl]
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 第 ${action.round} 回合 ]`);
+[nl]      console.log(`Boss 受到 ${PLAYER_NAME}的攻擊 ,損失${attack_value}HP ,剩餘HP: ${action.boss_hp}`);
+[nl]      
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]      else {
+[nl]        // 若 Boss 未被擊敗，繼續下一回合攻擊
+[nl]        setTimeout(() => {
+[nl]          round=action.round;
+[nl]          round++;
+[nl]          const nextAttack = {
+[nl]            from: PLAYER_NAME,
+[nl]            to: 'Boss',
+[nl]            damage: attack_value
+[nl]          };
+[nl]          client.publish('battle/action', JSON.stringify(nextAttack));
+[nl]        }, 1000);  // 間隔
+[nl]      }
+[nl]    }
+[nl]
+[nl]  }
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+陳若庭,"client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","client.publish('battle/action', JSON.stringify({
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    }));","if (topic == ""battle/action"") {
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]      const round = roundInfo.round;
+[nl]      const boss_hp = roundInfo.boss_hp;
+[nl]
+[nl]      if (round !== undefined && boss_hp !== undefined) {
+[nl]        console.log(`[ 第 ${round} 回合 ]`);
+[nl]        console.log(`Boss 受到 Player 的攻擊，損失 ${attack_value} HP，剩餘 HP：${boss_hp}`);
+[nl]        
+[nl]        if (boss_hp <= 0) {
+[nl]          console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          client.end(); // 結束 MQTT 連線
+[nl]        }
+[nl]      }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+陳詠,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attack = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attack));","if(topic === 'battle/action'){
+[nl]    const action = JSON.parse(msg);
+[nl]    if (action.round !== undefined) {
+[nl]      console.log(`[ 第 ${action.round} 回合 ]: Boss 剩餘血量 ${action.boss_hp}`);
+[nl]      if (action.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end(); // 結束 MQTT 連線
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"
+陳鎮成,"[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online'); 
+[nl]","const attackAction = {
+[nl]      to: 'Boss',         
+[nl]      from: PLAYER_NAME,  
+[nl]      damage: attack_value 
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackAction));","if (topic === 'battle/action') { 
+[nl]    try {
+[nl]      const receivedData = JSON.parse(msg); // 使用更通用的名稱
+[nl]
+[nl]      // 檢查是否是 Boss 的狀態更新訊息 (包含 round 和 boss_hp)
+[nl]      if (receivedData.round !== undefined && receivedData.boss_hp !== undefined) {
+[nl]        // === 變數定義 ===
+[nl]        const currentRound = receivedData.round;
+[nl]        const bossCurrentHp = receivedData.boss_hp;
+[nl]
+[nl]        // === 使用變數的程式碼，現在位於正確的作用域內 ===
+[nl]        console.log(`[ 第 ${currentRound} 回合 ]: Boss 剩餘血量 ${bossCurrentHp}`);
+[nl]
+[nl]        if (bossCurrentHp <= 0) {
+[nl]          // Boss 被擊敗
+[nl]          console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          client.end(); // 結束 MQTT 連線
+[nl]        } else {
+[nl]          // Boss 還活著，發動下一次攻擊
+[nl]          console.log(`\n${PLAYER_NAME} 對 Boss 發起攻擊，造成 ${attack_value} 傷害`);
+[nl]          const nextAttackAction = {
+[nl]            to: 'Boss',
+[nl]            from: PLAYER_NAME,
+[nl]            damage: attack_value
+[nl]          };
+[nl]          client.publish('battle/action', JSON.stringify(nextAttackAction));
+[nl]        }
+[nl]        // === 使用變數的程式碼結束 ===
+[nl]
+[nl]      } 
+[nl]      // else: 如果收到的訊息不是 Boss 的狀態更新格式 (例如，是自己的攻擊回顯)，則忽略它。
+[nl]      // 你也可以在這裡加個 console.log 來觀察收到了什麼非預期訊息：
+[nl]      // else {
+[nl]      //   console.log(""收到非 Boss 狀態更新訊息:"", receivedData);
+[nl]      // }
+[nl]
+[nl]    } catch (error) {
+[nl]      // JSON 解析失敗或其他處理錯誤
+[nl]      console.error(""處理 'battle/action' 訊息時發生錯誤:"", msg, error); 
+[nl]    }
+[nl]  }"
+陳鼎心,"// 1. 連線至 MQTT broker 的事件處理
+[nl]client.on('connect', () => {
+[nl]  console.log(`${PLAYER_ID} 已連線至 MQTT broker\n`);
+[nl]  
+[nl]  // 訂閱 Boss 上線通知
+[nl]  client.subscribe(TOPICS.ONLINE);
+[nl]  
+[nl]  // 訂閱 Boss 狀態更新
+[nl]  client.subscribe(TOPICS.STATUS);
+[nl]  
+[nl]  // 發布玩家上線通知
+[nl]  client.publish(TOPICS.ONLINE, JSON.stringify({
+[nl]    id: PLAYER_ID,
+[nl]    online: true
+[nl]  }));
+[nl]  
+[nl]  // 讓我們嘗試主動發送一次攻擊
+[nl]  setTimeout(attackBoss, 2000);
+[nl]});
+[nl]
+[nl]// 2. 接收訊息的事件處理
+[nl]client.on('message', (topic, message) => {
+[nl]  const messageStr = message.toString();
+[nl]  
+[nl]  // 處理 Boss 上線/離線
+[nl]  if (topic === TOPICS.ONLINE) {
+[nl]    const data = JSON.parse(messageStr);
+[nl]    
+[nl]    // 忽略自己的上線消息
+[nl]    if (data.id === PLAYER_ID) return;
+[nl]    
+[nl]    // 如果 Boss 上線，開始攻擊
+[nl]    if (data.id === 'Boss' && data.online && !isBossOnline) {
+[nl]      console.log('對方玩家在線，遊戲開始！');
+[nl]      isBossOnline = true;
+[nl]      attackBoss();
+[nl]    }
+[nl]  }
+[nl]  
+[nl]  // 處理 Boss 回應的狀態更新
+[nl]  if (topic === TOPICS.STATUS) {
+[nl]    const status = JSON.parse(messageStr);
+[nl]    
+[nl]    // 顯示當前回合資訊
+[nl]    console.log(`[ 第 ${status.round} 回合 ]`);
+[nl]    console.log(`Boss 受到 ${status.attacker} 的攻擊，損失 ${status.damage} HP，剩餘 HP：${status.remainingHealth}`);
+[nl]    
+[nl]    // 檢查是否擊敗 Boss
+[nl]    if (status.gameOver) {
+[nl]      console.log(`恭喜🎉🎉 ~~~ ${status.attacker} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]      isGameOver = true;
+[nl]    } else {
+[nl]      // 繼續攻擊
+[nl]      setTimeout(attackBoss, 500);
+[nl]    }
+[nl]  }
+[nl]});
+[nl]
+[nl]// 3. 攻擊 Boss 的函數
+[nl]function attackBoss() {
+[nl]  // 如果遊戲已結束，不再攻擊
+[nl]  if (isGameOver) return;
+[nl]  
+[nl]  // 發送攻擊動作
+[nl]  const attackMsg = {
+[nl]    id: PLAYER_ID,
+[nl]    action: 'attack'
+[nl]  };
+[nl]  
+[nl]  client.publish(TOPICS.ACTION, JSON.stringify(attackMsg));
+[nl]}",,
+陸人瑋,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    if (roundInfo.round !== undefined) {
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]      if (roundInfo.boss_hp <= 0) {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]      // 如果 Boss 還活著則繼續攻擊。註解沒說只會打一輪阿
+[nl]      else {
+[nl]        const nextAction = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value
+[nl]          };
+[nl]        client.publish('battle/action', JSON.stringify(nextAction));
+[nl]      }
+[nl]    }
+[nl]  }"
+顏聖峰,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","// 發送攻擊訊息
+[nl]    const attack = {
+[nl]      from: PLAYER_NAME,to: 'Boss',damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attack));","if (topic === 'battle/action') {
+[nl]    const roundInfo = JSON.parse(msg);
+[nl]    if (roundInfo.round !== undefined) {
+[nl]      console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]      if (roundInfo.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]    }
+[nl]  }"
+黃科寯,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  
+[nl]  client.subscribe('battle/action')
+[nl]  client.subscribe('battle/online')",// 攻擊邏輯已移至 sendAttack() 函數,"if (topic === 'battle/action') {
+[nl]    try {
+[nl]      // 解析 Boss 傳來的回合數與血量
+[nl]      const roundInfo = JSON.parse(msg);
+[nl]      
+[nl]      if (roundInfo.round !== undefined) {
+[nl]        console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]        
+[nl]        if (roundInfo.boss_hp <= 0) {
+[nl]          console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          client.end(); // 結束 MQTT 連線
+[nl]        } else {
+[nl]          // Boss 還活著，繼續攻擊
+[nl]          setTimeout(sendAttack, 1000); 
+[nl]        }
+[nl]      }
+[nl]    } catch (error) {
+[nl]      console.error('解析 Boss 回應發生錯誤:', error);
+[nl]    }
+[nl]  }"
+黃筠,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const payload = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value,
+[nl]    };
+[nl]
+[nl]    client.publish('battle/action', JSON.stringify(payload));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    const data = JSON.parse(msg);
+[nl]
+[nl]    if (typeof data.round !== 'undefined') {
+[nl]      console.log(`[ 回合 ${data.round} ]: Boss 剩餘血量 ${data.boss_hp}`);
+[nl]
+[nl]      if (data.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      } else {
+[nl]        const payload = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value,
+[nl]        };
+[nl]        client.publish('battle/action', JSON.stringify(payload));
+[nl]      }
+[nl]    }
+[nl]  }"
+黃茂勛,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackMessage = {
+[nl]      to: 'Boss',           
+[nl]      from: PLAYER_NAME,    
+[nl]      damage: attack_value 
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackMessage));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]
+[nl]  if (topic === 'battle/action') {
+[nl]    try {
+[nl]      const action = JSON.parse(msg);
+[nl]      const { round, boss_hp } = action;
+[nl]      if (round !== undefined) {
+[nl]        console.log(`[ 第 ${round} 回合 ]: Boss 剩餘血量 ${boss_hp}`);
+[nl]        
+[nl]        if (boss_hp <= 0) {
+[nl]          console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          client.end(); // 結束 MQTT 連線
+[nl]        }
+[nl]      }
+[nl]    } catch (error) {
+[nl]      console.error('錯誤：無法解析 action 訊息內容', error);
+[nl]    }
+[nl]  }"
+黃蓉容,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attackMsg = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(attackMsg));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]  if (topic === 'battle/action') {
+[nl]    let data;
+[nl]    try {
+[nl]      data = JSON.parse(msg);
+[nl]    } catch (_) {
+[nl]      return;
+[nl]    }
+[nl]
+[nl]    if (data && data.round !== undefined) {
+[nl]      console.log(`[ 回合 ${data.round} ]: Boss 剩餘血量 ${data.boss_hp}`);
+[nl]
+[nl]      if (data.boss_hp <= 0) {
+[nl]        console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      } else {
+[nl]        // 下一回合再攻擊
+[nl]        const attackMsg = {
+[nl]          from: PLAYER_NAME,
+[nl]          to: 'Boss',
+[nl]          damage: attack_value
+[nl]        };
+[nl]        client.publish('battle/action', JSON.stringify(attackMsg));
+[nl]      }
+[nl]    }
+[nl]  }"
+黃顥霆,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","// 組成一個 JSON 格式的攻擊訊息，包含攻擊者、對象及攻擊傷害，並發送給 'battle/action'
+[nl]    const action = {
+[nl]      from: PLAYER_NAME,
+[nl]      to: 'Boss',
+[nl]      damage: attack_value
+[nl]    };
+[nl]    client.publish('battle/action', JSON.stringify(action));","// 當收到 'battle/action' 主題的訊息時，解析 Boss 回傳的回合數與剩餘 HP，
+[nl]  // 並依照回傳資料輸出狀態；若 Boss HP <= 0，則結束連線。
+[nl]  if (topic === 'battle/action') {
+[nl]    try {
+[nl]      const roundInfo = JSON.parse(msg);
+[nl]      // 收到回合資訊時才進行後續判斷
+[nl]      if (roundInfo.round !== undefined) {
+[nl]        console.log(`[ 回合 ${roundInfo.round} ]: Boss 剩餘血量 ${roundInfo.boss_hp}`);
+[nl]        if (roundInfo.boss_hp <= 0) {
+[nl]          console.log(`恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]          //client.end();
+[nl]        } else {
+[nl]          // Boss 還未被擊敗，繼續發動下一次攻擊
+[nl]          console.log(`${PLAYER_NAME} 對 Boss 發起攻擊，造成 ${attack_value} 傷害`);
+[nl]          const action = {
+[nl]            from: PLAYER_NAME,
+[nl]            to: 'Boss',
+[nl]            damage: attack_value
+[nl]          };
+[nl]          client.publish('battle/action', JSON.stringify(action));
+[nl]        }
+[nl]      }
+[nl]    } catch (e) {
+[nl]      console.error('無法解析訊息:', msg);
+[nl]    }
+[nl]  }"
+龔俐恬,"// 訂閱主題 'battle/action' 和 'battle/online'
+[nl]  // 可參考 Game.js
+[nl]  client.subscribe('battle/action');
+[nl]  client.subscribe('battle/online');","const attack = {
+[nl]      from:PLAYER_NAME,
+[nl]      to:'Boss',
+[nl]      damage:attack_value
+[nl]    };
+[nl]    client.publish('battle/action',JSON.stringify(attack));","[nl]  // 程式邏輯: (輔助用)
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  //  if 主題是 battle/action :  (可參考 player.js 中 battle/online 怎麼判斷的)
+[nl]  //    解析 Boss 傳來的回合數與血量 (請參考 Game.js 中 的 action JSON 解析，怎麼實作的)
+[nl]  //    if 傳回來的回合數不等於 undefined :
+[nl]  //      輸出內容: [ 回合 ${回合數} ]: Boss 剩餘血量 ${血量}
+[nl]  //      if Boss 剩餘血量 <= 0 :
+[nl]  //        輸出內容: 恭喜🎉🎉 ~~~ ${玩家名稱} 攻擊成功，Boss 被擊敗 !!!
+[nl]  //        結束 MQTT 連線
+[nl]  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+[nl]  if (topic === 'battle/action') {
+[nl]    const roundinfo = JSON.parse(msg);
+[nl]    if (roundinfo.round !== undefined ) {
+[nl]      console.log(`\n[ 回合 ${roundinfo.round} ]: Boss 剩餘血量 ${roundinfo.boss_hp}`);
+[nl]      if (roundinfo.boss_hp <= 0) {
+[nl]        console.log(`\n恭喜🎉🎉 ~~~ ${PLAYER_NAME} 攻擊成功，Boss 被擊敗 !!!`);
+[nl]        client.end();
+[nl]      }
+[nl]      else {
+[nl]        client.publish('battle/online', `contiune`);
+[nl]      }
+[nl]    }
+[nl]  }
+[nl]  // 部分內容，可參考 Game.js 中的程式碼
+[nl]"

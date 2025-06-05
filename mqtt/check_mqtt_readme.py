@@ -57,4 +57,4 @@ def check_answers(csv_filename, result_filename):
                 writer.writerow([name] + result + ['Checked'])
 
 # Example usage
-check_answers("hw_remoting_readme_answer.csv", "result_output_readme.csv")
+check_answers("hw_mqtt_readme_answer.csv", "result_output_readme.csv")

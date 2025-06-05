@@ -2,17 +2,16 @@ import os
 import csv
 import re
 
-hw_dir = "./remoting_students"
-readme_csv_path = "hw_remoting_readme_answer.csv"
+hw_dir = "./mqtt_students"
+readme_csv_path = "hw_mqtt_readme_answer.csv"
 
 solutions = [
     'B',
-    'A',
-    '四|4|constowlPostProto=grpc.loadPackageDefinition(packageDefinition).owlpost',
-    '編號|field number|tag|欄位|序|Tag',
-    '找不到|不存在',
-    '咆嘯信已送達|"咆哮信已送達"',
-    '沒|可以|camelcase|camelCase|Camelcase|CamelCase|駝峰式|pickupCode|不|底線|能執行|可行|合法|undefined|可能',
+    'B',
+    'D',
+    'C',
+    'C',
+    '8|八'
 ]
 
 def parse_answers_from_content(content):

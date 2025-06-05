@@ -20,16 +20,17 @@ client.on('connect', () => {
 client.on('message', (topic, message) => {
   const msg = message.toString()
 
-  const action = {
-    from: PLAYER_NAME,
-    to: 'Boss',
-    damage: attack_value,
-  }
   if (topic === 'battle/online') {
     // 輸出玩家對 Boss 造成的傷害
     console.log(`${PLAYER_NAME} 對 Boss 發起攻擊，造成 ${attack_value} 傷害`)
 
     // === 請實作這裡(以下) ===
+    const action = {
+      from: PLAYER_NAME,
+      to: 'Boss',
+      damage: attack_value,
+    }
+
     client.publish('battle/action', JSON.stringify(action))
     // === 請實作這裡(以上) ===
 
