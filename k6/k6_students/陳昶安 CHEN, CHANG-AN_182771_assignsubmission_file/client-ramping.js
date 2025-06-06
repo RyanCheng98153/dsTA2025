@@ -22,7 +22,7 @@ import { sleep } from "k6";
 
 export const options = {
   stages: [
-    // ====== 請實作以上內容 ======
+    // ====== 請實作以下內容 ======
     { duration: "2s", target: 400 },
     { duration: "2s", target: 800 },
     { duration: "2s", target: 1200 },

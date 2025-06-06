@@ -22,12 +22,14 @@ import { sleep } from 'k6';
 
 export const options = {
   stages: [
+    // 請實作以下內容
     { duration: '2s', target: 400 }, // 開始時使用 400 個使用者
     { duration: '2s', target: 800 }, // 2 秒後增加到 800 個使用者
     { duration: '2s', target: 1200 },
     { duration: '2s', target: 1600 },
     { duration: '2s', target: 2000 },
     { duration: '2s', target: 2400 },
+    // 請實作以上內容
   ],
 };
 

@@ -8,8 +8,10 @@ import { sleep } from 'k6';
 // 實作需求: 使用 5000 個使用者，持續 5 秒鐘
 
 export const options = {
+  // 請實作以下內容
   vus: 5000,          // 代表 100 個使用者同時執行
   duration: '5s',  // 代表持續 10 秒鐘
+  // 請實作以上內容
 };
 
 export default function () {

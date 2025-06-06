@@ -9,8 +9,10 @@ import http from 'k6/http';
 
 // 實作範例：
 export const options = {
+  // 請實作以下內容
   vus: 100,          // 代表 100 個使用者同時執行
   duration: '10s',  // 代表持續 10 秒鐘
+  // 請實作以上內容
 };
 
 export default function () {

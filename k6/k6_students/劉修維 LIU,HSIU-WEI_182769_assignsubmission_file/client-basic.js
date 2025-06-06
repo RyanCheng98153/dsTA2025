@@ -15,7 +15,8 @@ import http from 'k6/http';
 
 
 export const options = {
-    vue : 10,
+    // ====== 請實作以下內容 ======  
+  vue : 10,
     duration : '10s',
     // ====== 請實作以上內容 ======
 };
