@@ -1,0 +1,530 @@
+name,basic,explode,ramping
+solution,"   vus: 100,   duration: '10s', ","   vus: 5000,   duration: '5s', ","     { duration: '2s', target: 400 },     { duration: '2s', target: 800 },     { duration: '2s', target: 1200 },     { duration: '2s', target: 1600 },     { duration: '2s', target: 2000 },     { duration: '2s', target: 2400 }, "
+何嘉柚,"vus: 100, //代表模擬用戶數量
+[nl]    duration: '10s', //代表執行時間","vus: 5000, //代表模擬用戶數量
+[nl]  duration: '5s', //代表執行時間",
+余采嬙,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },   
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+傅子珈,,,
+傅鈺婷,"vus: 100,
+[nl]  duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+劉修維,,"vus: 5000,         // 同時啟動 5000 個虛擬使用者
+[nl]  duration: '5s',    // 測試持續 5 秒",
+劉白,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400},
+[nl]    { duration: '2s', target: 800},
+[nl]    { duration: '2s', target: 1200},
+[nl]    { duration: '2s', target: 1600},
+[nl]    { duration: '2s', target: 2000},
+[nl]    { duration: '2s', target: 2400}"
+劉秉治,"[nl]    vus: 100, 
+[nl]    duration: '10s',
+[nl]","[nl]  vus: 5000, 
+[nl]  duration: '5s',
+[nl]","[nl]    { duration: '2s', target: 400},
+[nl]    { duration: '2s', target: 800},
+[nl]    { duration: '2s', target: 1200},
+[nl]    { duration: '2s', target: 1600},
+[nl]    { duration: '2s', target: 2000},
+[nl]    { duration: '2s', target: 2400}
+[nl]"
+吳唯禎,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+吳姵萱,"vus: 100,
+[nl]	duration: '10s',","vus: 5000,
+[nl]	duration: '5s',","{duration: '2s', target:400},
+[nl]	{duration: '2s', target:800},
+[nl]	{duration: '2s', target:1200},
+[nl]	{duration: '2s', target:1600},
+[nl]	{duration: '2s', target:2000},
+[nl]	{duration: '2s', target:2400}"
+吳岱芸,"vus: 100,
+[nl]    duration: '10s'","vus: 5000,
+[nl]    duration: '5s',","{ duration: '2s', target: 400 },  
+[nl]    { duration: '2s', target: 800 },   
+[nl]    { duration: '2s', target: 1200 },  
+[nl]    { duration: '2s', target: 1600 },  
+[nl]    { duration: '2s', target: 2000 },  
+[nl]    { duration: '2s', target: 2400 },"
+吳武峰,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]    duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },  
+[nl]    { duration: '2s', target: 2400 }"
+吳珮嘉,"vus: 100, 
+[nl]    duration: '10s'","vus: 5000, 
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },   // 初始 400 使用者
+[nl]    { duration: '2s', target: 800 },   // 第 2 秒增加到 800 使用者
+[nl]    { duration: '2s', target: 1200 },  // 第 4 秒增加到 1200 使用者
+[nl]    { duration: '2s', target: 1600 },  // 第 6 秒增加到 1600 使用者
+[nl]    { duration: '2s', target: 2000 },  // 第 8 秒增加到 2000 使用者
+[nl]    { duration: '2s', target: 2400 },  // 第 10 秒增加到 2400 使用者"
+周映辰,"vus: 100,
+[nl]    duration: '10s',
+[nl]","vus: 5000,
+[nl]  duration: '5s',
+[nl]","{duration: '2s', target: 400},
+[nl]    {duration: '2s', target: 800},
+[nl]    {duration: '2s', target: 1200},
+[nl]    {duration: '2s', target: 1600},
+[nl]    {duration: '2s', target: 2000},
+[nl]    {duration: '2s', target: 2400},
+[nl]"
+唐湘怡,"vus: 100,
+[nl]	duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]	{ duration: '2s', target: 800 },
+[nl]	{ duration: '2s', target: 1200 },
+[nl]	{ duration: '2s', target: 1600 },
+[nl]	{ duration: '2s', target: 2000 },
+[nl]	{ duration: '2s', target: 2400 },"
+嚴聲遠,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]    duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+尤敏米茲夠,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{duration: '2s', target: 400}, // 開始時使用 400 個使用者
+[nl]    {duration: '2s', target: 800}, // 2 秒後增加到 800 個使用者
+[nl]    {duration: '2s', target: 1200}, // 2 秒後增加到 1200 個使用者
+[nl]    {duration: '2s', target: 1600}, // 2 秒後增加到 1600 個使用者
+[nl]    {duration: '2s', target: 2000}, // 2 秒後增加到 2000 個使用者
+[nl]    {duration: '2s', target: 2400}, // 2 秒後增加到 2400 個使用者"
+廖偉哲,,,
+廖安豪,"vus: 100,         
+[nl]    duration: '10s',","vus: 5000,         
+[nl]    duration: '5s', 
+[nl]","{ duration: '2s', target: 400 },
+[nl]    { duration: '10s', target: 2400 }"
+廖家樂,,,
+張曜麟,"vus: 100,
+[nl]    duration: '10s', 
+[nl]","vus: 5000,
+[nl]  duration: '5s'","{ duration: '2s', target: 400},
+[nl]    { duration: '2s', target: 800},
+[nl]    { duration: '2s', target: 1200},
+[nl]    { duration: '2s', target: 1600},
+[nl]    { duration: '2s', target: 2000},
+[nl]    { duration: '2s', target: 2400},"
+張芸禎,"vus: 100,            // 同時啟動 100 個虛擬使用者
+[nl]  duration: '10s',     // 持續 10 秒","vus: 5000,           // 虛擬使用者數量
+[nl]  duration: '5s',      // 測試持續時間",
+曾博鴻,"vus: 100,         
+[nl]    duration: '10s',","vus: 5000,        
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+曾奕誠,"vus: 100,
+[nl]    duration: '10s',",,"{ duration: '0s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 }"
+李冠蓁,"vus: 100,
+[nl]    duration: '10s'","vus: 5000,
+[nl]  duration: '5s'","{duration: '2s', target: 400},
+[nl]      {duration: '2s', target: 800},
+[nl]      {duration: '2s', target: 1200},
+[nl]      {duration: '2s', target: 1600},
+[nl]      {duration: '2s', target: 2000},
+[nl]      {duration: '2s', target: 2400},"
+李昕璇,,,
+李昕融,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]    duration: '5s',","{ duration: '0s', target: 400 },
+[nl]        { duration: '2s', target: 800 },
+[nl]        { duration: '2s', target: 1200 },
+[nl]        { duration: '2s', target: 1600 },
+[nl]        { duration: '2s', target: 2000 },
+[nl]        { duration: '2s', target: 2400 },"
+李柏漢,"vus: 100,
+[nl]    duration:  '10s'","vus: 5000,
+[nl]  duration:  '5s'","{duration: '2s', target: 400},
+[nl]    {duration: '2s', target: 800},
+[nl]    {duration: '2s', target: 1200},
+[nl]    {duration: '2s', target: 1600},
+[nl]    {duration: '2s', target: 2000},
+[nl]    {duration: '2s', target: 2400},"
+李胤寬,"[nl]    vus: 100,
+[nl]    duration: '10s',
+[nl]","[nl]  vus: 5000,
+[nl]  duration: '5s',
+[nl]","[nl]    { duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },
+[nl]"
+李采萱,"vus: 100,          // 代表 100 個使用者同時執行
+[nl]    duration: '10s',  // 代表持續 10 秒鐘
+[nl]","vus: 5000,          // 代表 5000 個使用者同時執行
+[nl]  duration: '5s',  // 代表持續 5 秒鐘
+[nl]","{ duration: '2s', target: 400 }, // 每 2 秒增加 400 個使用者
+[nl]    { duration: '2s', target: 800 }, // 增加到 800 個使用者
+[nl]    { duration: '2s', target: 1200 }, // 增加到 1200 個使用者
+[nl]    { duration: '2s', target: 1600 }, // 增加到 1600 個使用者
+[nl]    { duration: '2s', target: 2000 }, // 增加到 2000 個使用者
+[nl]    { duration: '2s', target: 2400 }, // 增加到 2400 個使用者"
+林冠儀,"vus: 100, // 使用者數量
+[nl]    duration: '10s', // 測試持續時間","vus : 5000, // 使用者數量
+[nl]  duration : '5s', // 測試持續時間","{ duration: '2s', target: 400 },   // 2 秒內升至 400 VUs
+[nl]    { duration: '2s', target: 800 },   // 再 2 秒內升至 800 VUs
+[nl]    { duration: '2s', target: 1200 },  // 再 2 秒內升至 1200 VUs
+[nl]    { duration: '2s', target: 1600 },  // 再 2 秒內升至 1600 VUs
+[nl]    { duration: '2s', target: 2000 },  // 再 2 秒內升至 2000 VUs
+[nl]    { duration: '2s', target: 2400 },  // 再 2 秒內升至 2400 VUs"
+林叡啟,"vus: 100,       
+[nl]  duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+林子葳,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 }"
+林明輝,"vus: 100,        // 100 個使用者同時執行
+[nl]    duration: '10s', // 持續 10 秒鐘","vus: 5000,       
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },  
+[nl]    { duration: '2s', target: 800 },  
+[nl]    { duration: '2s', target: 1200 }, 
+[nl]    { duration: '2s', target: 1600 }, 
+[nl]    { duration: '2s', target: 2000 }, 
+[nl]    { duration: '2s', target: 2400 },"
+林韋宏,"vus: 100,          // 代表 100 個使用者同時執行
+[nl]    duration: '10s',  // 代表持續 10 秒鐘","vus: 5000, // 使用者數量
+[nl]  duration: '5s', // 測試持續時間","{ duration: '2s', target: 400 }, // 開始時使用 400 個使用者
+[nl]    { duration: '10s', target: 2400 }, // 2 秒後增加到 400 個使用者"
+柯侑易,"vus: 100,
+[nl]  duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '0s', target: 400},
+[nl]    { duration: '2s', target: 800},
+[nl]    { duration: '4s', target: 1200},
+[nl]    { duration: '6s', target: 1600},
+[nl]    { duration: '8s', target: 2000},
+[nl]    { duration: '10s', target: 2400},
+[nl]    { duration: '12s', target: 2400},"
+楊宗儒,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]    duration: '5s',","{ duration: '0s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 }"
+楊琇茹,"vus:100,
+[nl]  duration:'10s',","vus:5000,
+[nl]  duration:'5s',","{ duration: '5s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+沈思妤,"vus: 100,          // 100 個使用者同時執行
+[nl]    duration: '10s',  // 持續 10 秒鐘","vus: 5000,          // 5000 個使用者同時執行
+[nl]  duration: '5s',  // 持續 5 秒鐘","{ duration: '2s', target: 400 }, // 開始時使用 400 個使用者
+[nl]      { duration: '2s', target: 800 }, // 2 秒後增加到 800 個使用者
+[nl]      { duration: '2s', target: 1200 }, // 4 秒後增加到 1200 個使用者
+[nl]      { duration: '2s', target: 1600 }, // 6 秒後增加到 1600 個使用者
+[nl]      { duration: '2s', target: 2000 }, // 8 秒後增加到 2000 個使用者
+[nl]      { duration: '2s', target: 2400 }, // 10 秒後增加到 2400 個使用者"
+王子翔,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]    duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+莊羽媗,"vus: 100,
+[nl]  duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+蔡景紘,"vus: 100,
+[nl]    duration: '10s'","vus:5000,
+[nl]    duration: '5s',","{ duration: '2s', target: 400 }, 
+[nl]    { duration: '2s', target: 800 }, 
+[nl]    { duration: '2s', target: 1200 }, 
+[nl]    { duration: '2s', target: 1600 }, 
+[nl]    { duration: '2s', target: 2000 }, 
+[nl]    { duration: '2s', target: 2400 }, 
+[nl]    { duration: '2s', target: 2400 }"
+蔡汶璋,"vus: 100,     
+[nl]    duration: '10s',",,
+蔡詠丞,"[nl]    vus:100,
+[nl]    duration:'10s'
+[nl]","[nl]  vus:5000,
+[nl]  duration:'5s'
+[nl]","[nl]    { duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },
+[nl]"
+蕭名容,"vus: 100, // 代表 100 個使用者同時執行
+[nl]  duration: ""10s"", // 代表持續 10 秒鐘","vus: 5000, // 代表 5000 個使用者同時執行
+[nl]  duration: ""5s"", // 代表持續 5 秒鐘","{ duration: ""2s"", target: 400 },
+[nl]    { duration: ""2s"", target: 800 },
+[nl]    { duration: ""2s"", target: 1200 },
+[nl]    { duration: ""2s"", target: 1600 },
+[nl]    { duration: ""2s"", target: 2000 },
+[nl]    { duration: ""2s"", target: 2400 },"
+蕭孟汝,"vus: 100,          // 代表 100 個使用者同時執行
+[nl]    duration: '10s',  // 代表持續 10 秒鐘","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+許景筑,"[nl]      vus: 100,          // 代表 100 個使用者同時執行
+[nl]      duration: '10s',   // 代表持續 10 秒鐘
+[nl]    
+[nl]","[nl]    vus: 5000,          // 代表 5000 個使用者同時執行
+[nl]    duration: '5s',   // 代表持續 5 秒鐘
+[nl]  
+[nl]","[nl]    // 使用 400 個使用者，持續 2 秒鐘
+[nl]    start_fixed: {
+[nl]      executor: 'constant-vus',
+[nl]      vus: 400,
+[nl]      duration: '2s',
+[nl]      startTime: '0s',
+[nl]    },
+[nl]    // 每 2 秒增加 400 個使用者，直到達到 2400 個使用者
+[nl]    // 一共持續 12 秒鐘
+[nl]    ramp_up: {
+[nl]      executor: 'ramping-vus',
+[nl]      startVUs: 400,
+[nl]      stages: [
+[nl]        { duration: '2s', target: 800 },
+[nl]        { duration: '2s', target: 1200 },
+[nl]        { duration: '2s', target: 1600 },
+[nl]        { duration: '2s', target: 2000 },
+[nl]        { duration: '2s', target: 2400 },
+[nl]      ],
+[nl]      startTime: '2s',
+[nl]    }"
+謝妍晞,"vus: 100,
+[nl]    duration: '10s',
+[nl]","vus: 5000,
+[nl]  duration: '5s',
+[nl]","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },
+[nl]"
+賴元智,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 }, 
+[nl]    { duration: '2s', target: 800 }, 
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+郭彥頡,"vus: 100,
+[nl]  duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 }, 
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+金娜伶,"vus: 100,
+[nl]    duration: '10s',
+[nl]","vus: 5000,
+[nl]    duration: '5s',
+[nl]","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },
+[nl]"
+陳奕利,"vus: 100,
+[nl]	duration: '10s'","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+陳家祥,"vus: 100,
+[nl]  duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+陳建銘,"vus: 100,        
+[nl]    duration: '10s',","vus: 5000,       
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },   
+[nl]    { duration: '10s', target: 2400 },"
+陳昶安,"vus: 100,
+[nl]  duration: ""10s"",","vus: 5000,
+[nl]  duration: ""5s"",",
+陳柏淵,"vus: 100, // 同時使用者數量為 100
+[nl]    duration: '10s', // 測試持續 10 秒","vus: 5000, // 同時使用者數量為 5000
+[nl]  duration: '5s', // 測試持續 5 秒","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+陳楷璿,"vus: 100,          
+[nl]    duration: '10s',","vus:5000,
+[nl]  duration:'5s',","{ duration: '2s', target: 400 }, // 開始時使用 400 個使用者
+[nl]    { duration: '2s', target: 800 }, 
+[nl]    { duration: '2s', target: 1200 }, 
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+陳炫霖,"vus: 100,          // 代表 100 個使用者同時執行
+[nl]  duration: '10s',","vus: 5000,          // 代表 5000個使用者同時執行
+[nl]  duration: '5s',","{ duration: '2s', target: 400 }, 
+[nl]    { duration: '2s', target: 800 }, 
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 }"
+陳竣哲,"vus: 100,        // 同時 100 個虛擬使用者
+[nl]      duration: '10s', // 持續 10 秒","vus: 5000,        // 同時 5000 個虛擬使用者
+[nl]  duration: '5s', // 持續 5 秒","{ duration: '2s', target: 400 },   // 第 2 秒時，達到 400 VUs
+[nl]    { duration: '2s', target: 800 },   // 第 4 秒時，達到 800 VUs
+[nl]    { duration: '2s', target: 1200 },  // 第 6 秒時，達到 1200 VUs
+[nl]    { duration: '2s', target: 1600 },  // 第 8 秒時，達到 1600 VUs
+[nl]    { duration: '2s', target: 2000 },  // 第 10 秒時，達到 2000 VUs
+[nl]    { duration: '2s', target: 2400 },  // 第 12 秒時，達到 2400 VUs"
+陳良鈺,"vus: 100,          // 代表 100 個使用者同時執行
+[nl]    duration: '10s',  // 代表持續 10 秒鐘s","stages: [
+[nl]    { duration: '5s', target: 5000 }, // 開始時使用 5000 個使用者
+[nl]  ],",
+陳若庭,"vus: 100, //代表模擬用戶數量
+[nl]    duration: '10s', //代表執行時間","vus: 5000, //代表模擬用戶數量
+[nl]  duration: '5s', //代表執行時間","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+陳詠,"vus : 100,         
+[nl]    duration: '10s',","vus : 5000,          
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+陳鎮成,"vus: 100,          
+[nl]   duration: '10s',","vus: 5000,         
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+陳鼎心,,,
+陸人瑋,"vus: 100,
+[nl]    duration: '10s'","vus: 5000,
+[nl]  duration: '5s'","{ duration: '2s', target: 400 },   // 0~2秒，400個使用者
+[nl]    { duration: '2s', target: 800 },   // 2~4秒，800個使用者
+[nl]    { duration: '2s', target: 1200 },  // 4~6秒，1200個使用者
+[nl]    { duration: '2s', target: 1600 },  // 6~8秒，1600個使用者
+[nl]    { duration: '2s', target: 2000 },  // 8~10秒，2000個使用者
+[nl]    { duration: '2s', target: 2400 }  // 10~12秒，2400個使用者"
+顏聖峰,,,
+黃科寯,"[nl]  vus: 100,
+[nl]  duration: '10s',
+[nl]","[nl]  vus: 5000,
+[nl]  duration: '5s',
+[nl]","[nl]    { duration: '2s', target: 400 },   
+[nl]    { duration: '2s', target: 800 },   
+[nl]    { duration: '2s', target: 1200 },  
+[nl]    { duration: '2s', target: 1600 },  
+[nl]    { duration: '2s', target: 2000 },  
+[nl]    { duration: '2s', target: 2400 },  
+[nl]"
+黃筠,"vus: 100,         // 同時執行的虛擬使用者數量
+[nl]    duration: '10s',  // 持續時間為 10 秒","vus: 5000,        // 虛擬使用者數量
+[nl]  duration: '5s',   // 測試持續時間","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+黃茂勛,"vus: 100,         
+[nl]    duration: '10s',","vus: 5000,
+[nl]  duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"
+黃蓉容,"vus: 100,        // 同時 100 位使用者
+[nl]  duration: '10s', // 測試 10 秒","vus: 5000,       // 直接丟 5000 位使用者
+[nl]  duration: '5s',  // 測試 5 秒","{ duration: '2s', target: 400  },  // 0–2  秒：400 VU
+[nl]    { duration: '2s', target: 800  },  // 2–4  秒：800 VU
+[nl]    { duration: '2s', target: 1200 },  // 4–6  秒：1200 VU
+[nl]    { duration: '2s', target: 1600 },  // 6–8  秒：1600 VU
+[nl]    { duration: '2s', target: 2000 },  // 8–10 秒：2000 VU
+[nl]    { duration: '2s', target: 2400 },  // 10–12 秒：2400 VU"
+黃顥霆,"vus: 100,        // 同時 100 位使用者
+[nl]    duration: '10s', // 持續時間 10 秒","vus: 5000,       // 同時 5000 位使用者
+[nl]    duration: '5s',  // 持續時間 5 秒","{ duration: '2s', target: 400  }, // 0–2s: 400 VUs
+[nl]    { duration: '2s', target: 800  }, // 2–4s: 800 VUs
+[nl]    { duration: '2s', target: 1200 }, // 4–6s: 1200 VUs
+[nl]    { duration: '2s', target: 1600 }, // 6–8s: 1600 VUs
+[nl]    { duration: '2s', target: 2000 }, // 8–10s: 2000 VUs
+[nl]    { duration: '2s', target: 2400 }, // 10–12s: 2400 VUs"
+龔俐恬,"vus: 100,
+[nl]    duration: '10s',","vus: 5000,
+[nl]    duration: '5s',","{ duration: '2s', target: 400 },
+[nl]    { duration: '2s', target: 800 },
+[nl]    { duration: '2s', target: 1200 },
+[nl]    { duration: '2s', target: 1600 },
+[nl]    { duration: '2s', target: 2000 },
+[nl]    { duration: '2s', target: 2400 },"

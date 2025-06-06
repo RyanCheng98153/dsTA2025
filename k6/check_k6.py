@@ -6,7 +6,8 @@ def normalize_code(code):
     code = code.replace('：', ':')
 
     # Remove comments from // to the first [nl]
-    code = re.sub(r'//.*?\[nl\]', '[nl]', code)
+    codelines = code.split('[nl]')
+    code = ' '.join([line for line in codelines if not line.strip().startswith('//')])
 
     # Remove all semicolons
     code = code.replace(';', '')
@@ -41,7 +42,10 @@ def check_answers(csv_filename, result_filename):
         headers = reader[0]
         solution_row = reader[1][1:]  # Skip "solution"
         normalized_solution = [normalize_code(cell) for cell in solution_row]
-
+        
+        num_questions = len(normalized_solution)
+        correct_counts = [0] * num_questions  # counts per column
+        
         with open(result_filename, 'w', newline='', encoding='utf-8') as outfile:
             writer = csv.writer(outfile)
             writer.writerow(['name'] + headers[1:] + ['result'])
@@ -52,15 +56,18 @@ def check_answers(csv_filename, result_filename):
                 student_answers = row[1:]
                 result = []
 
-                for stud_ans, sol in zip(student_answers, normalized_solution):
+                for i, (stud_ans, sol) in enumerate(zip(student_answers, normalized_solution)):
                     norm_stud_ans = normalize_code(stud_ans)
                     if norm_stud_ans == sol:
                         result.append("Correct")
+                        correct_counts[i] += 1
                     else:
                         result.append(norm_stud_ans)
                         # result.append(stud_ans)  # Output original answer if wrong
 
                 writer.writerow([name] + result + ['Checked'])
+                
+            writer.writerow(['CorrectNum'] + correct_counts + [''])
 
 # Example usage
-check_answers("hw_remoting.csv", "result_output.csv")
+check_answers("hw_k6.csv", "result_output.csv")

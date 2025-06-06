@@ -1,20 +1,30 @@
 import os
 import csv
 
-hw_dir = "./remoting_students"
-output_path = "hw_remoting.csv"
+hw_dir = "./k6_students"
+output_path = "hw_k6.csv"
 
 # 固定輸出欄位
-headers = ['name', 'server1', 'server2', 'client1', 'proto1', 'proto2', 'proto3']
+headers = ['name', 'basic', 'explode', 'ramping']
 
 solutions = [
     'solution',
-    'console.log(`寄送信件給 ${call.request.studentName}, 學院：${house}, 追蹤碼：${tracking_id}`);',
-    'callback(null, { studentName: call.request.studentName, house: house, trackingId: tracking_id });',
-    'console.log(`霍格華茲錄取通知已寄出！\n學生: ${response.studentName}\n學院: ${response.house}\n追蹤碼: ${response.trackingId}\n`);',
-    'rpc SendLetter (LetterRequest) returns (LetterResponse);',
-    'string pickupCode = 1;',
-    'string studentName = 1; string house = 2; string status = 3;'
+"""
+  vus: 100,
+  duration: '10s',
+""".replace('\n', ' '),
+"""
+  vus: 5000,
+  duration: '5s',
+""".replace('\n', ' '),
+"""
+    { duration: '2s', target: 400 },
+    { duration: '2s', target: 800 },
+    { duration: '2s', target: 1200 },
+    { duration: '2s', target: 1600 },
+    { duration: '2s', target: 2000 },
+    { duration: '2s', target: 2400 },
+""".replace('\n', ' ')
 ]
 
 def extract_code_blocks(filepath):
@@ -28,11 +38,11 @@ def extract_code_blocks(filepath):
         current_block = []
 
         for line in file:
-            if "==== 請完成實作 (以下) ====" in line:
+            if "請實作以下內容" in line:
                 read_flag = True
                 current_block = []
                 continue
-            elif "==== 請完成實作 (以上) ====" in line:
+            elif "請實作以上內容" in line:
                 read_flag = False
                 code_blocks.append('[nl]'.join(current_block).strip())
                 continue
@@ -55,20 +65,16 @@ with open(output_path, mode='w', newline='', encoding='utf-8') as csvfile:
         stud_name = stud_dir.split(' ')[0]
         row_data = [stud_name]
 
-        # --- server.js ---
-        server_blocks = extract_code_blocks(os.path.join(full_path, 'server.js'))
-        while len(server_blocks) < 2:
-            server_blocks.append('')
-        row_data.extend(server_blocks[:2])
+        # --- basic.js ---
+        basic_blocks = extract_code_blocks(os.path.join(full_path, 'client-basic.js'))
+        row_data.append(basic_blocks[0] if len(basic_blocks) > 0 else '')
 
-        # --- client.js ---
-        client_blocks = extract_code_blocks(os.path.join(full_path, 'client.js'))
-        row_data.append(client_blocks[0] if len(client_blocks) > 0 else '')
+        # --- explode.js ---
+        explode_blocks = extract_code_blocks(os.path.join(full_path, 'client-explode.js'))
+        row_data.append(explode_blocks[0] if len(explode_blocks) > 0 else '')
 
-        # --- owl_post.proto ---
-        proto_blocks = extract_code_blocks(os.path.join(full_path, 'owl_post.proto'))
-        while len(proto_blocks) < 3:
-            proto_blocks.append('')
-        row_data.extend(proto_blocks[:3])
+        # --- ramping.js ---
+        ramping_blocks = extract_code_blocks(os.path.join(full_path, 'client-ramping.js'))
+        row_data.append(ramping_blocks[0] if len(ramping_blocks) > 0 else '')
 
         writer.writerow(row_data)
