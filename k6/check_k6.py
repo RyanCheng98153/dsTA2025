@@ -4,7 +4,8 @@ import re
 def normalize_code(code):
     # Normalize full-width colon
     code = code.replace('：', ':')
-
+    code = code.replace(',', '')
+    
     # Remove comments from // to the first [nl]
     codelines = code.split('[nl]')
     code = ' '.join([line for line in codelines if not line.strip().startswith('//')])
@@ -59,7 +60,6 @@ def check_answers(csv_filename, result_filename):
                 name = row[0]
                 student_answers = row[1:]
                 result = []
-                print(name)
                 for i, (stud_ans, sol) in enumerate(zip(student_answers, normalized_solution)):
                     norm_stud_ans = normalize_code(stud_ans)
                     if norm_stud_ans == sol:
