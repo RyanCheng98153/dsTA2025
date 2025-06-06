@@ -1,5 +1,5 @@
 name,player1,player2,player3,result
-solution,client.subscribe('battle/action')client.subscribe('battle/online'),"constpayload={damage:attack_value,from:player_name,to:'boss'}client.publish('battle/action',json.stringify(payload))",if(topic==='battle/action'){constpayload=json.parse(msg)if(roundinfo.round!==undefined){console.log([回合roundinfo.round]:boss剩餘血量roundinfo.boss_hp)if(roundinfo.boss_hp<=0){console.log(恭喜🎉🎉~~~player_name攻擊成功，boss被擊敗!!!)}client.end()//結束mqtt連線}},
+solution,client.subscribe('battle/action')client.subscribe('battle/online'),"constpayload={damage:attack_value,from:player_name,to:'boss'}client.publish('battle/action',json.stringify(payload))",if(topic==='battle/action'){constpayload=json.parse(msg)if(roundinfo.round!==undefined){console.log([回合roundinfo.round]:boss剩餘血量roundinfo.boss_hp)if(roundinfo.boss_hp<=0){console.log(恭喜🎉🎉~~~player_name攻擊成功，boss被擊敗!!!)}client.end(),
 何嘉柚,Correct,Correct,Correct,Checked
 余采嬙,Correct,Correct,Correct,Checked
 傅子珈,Correct,Correct,Correct,Checked
@@ -50,7 +50,7 @@ solution,client.subscribe('battle/action')client.subscribe('battle/online'),"con
 謝妍晞,Correct,Correct,"client.publish('battle/action',json.stringify(payload))",Checked
 賴元智,Correct,Correct,Correct,Checked
 郭彥頡,Correct,Correct,Correct,Checked
-金娜伶,Correct,"constpayload={//실제공격넣는부분to:'boss',damage:attack_value,from:player_name}client.publish('battle/action',json.stringify(payload))",Correct,Checked
+金娜伶,Correct,Correct,Correct,Checked
 陳奕利,Correct,Correct,Correct,Checked
 陳家祥,Correct,Correct,Correct,Checked
 陳建銘,"client.subscribe('battle/action',(err)=>{if(err){console.error('subscribeerror:',err)}else{console.log('subscribedtobattle/action')}})client.subscribe('battle/online',(err)=>{if(err){console.error('subscribeerror:',err)}else{console.log('subscribedtobattle/online')}})",Correct,Correct,Checked
@@ -62,7 +62,7 @@ solution,client.subscribe('battle/action')client.subscribe('battle/online'),"con
 陳良鈺,"client.subscribe(['battle/action','battle/online'],function(err){if(err){console.log('subscriptionerror:',err)}else{console.log('成功訂閱至主題battle/action,battle/online')}})",Correct,Correct,Checked
 陳若庭,Correct,Correct,Correct,Checked
 陳詠,Correct,Correct,Correct,Checked
-陳鎮成,Correct,Correct,"if(topic==='battle/action'){try{constpayload=json.parse(msg)//使用更通用的名稱if(roundinfo.round!==undefined&&receiveddata.boss_hp!==undefined){constpayload=receiveddata.roundconstpayload=receiveddata.boss_hpconsole.log([第currentround回合]:boss剩餘血量bosscurrenthp)if(bosscurrenthp<=0){console.log(恭喜🎉🎉~~~player_name攻擊成功，boss被擊敗!!!)client.end()//結束mqtt連線}else{console.log(player_name對boss發起攻擊，造成attack_value傷害)constpayload={damage:attack_value,from:player_name,to:'boss'}client.publish('battle/action',json.stringify(payload))}}}catch(error){console.error('處理'battle/action'訊息時發生錯誤:',msg,error)}}",Checked
+陳鎮成,Correct,Correct,"if(topic==='battle/action'){try{constpayload=json.parse(msg)if(roundinfo.round!==undefined&&receiveddata.boss_hp!==undefined){constpayload=receiveddata.roundconstpayload=receiveddata.boss_hpconsole.log([第currentround回合]:boss剩餘血量bosscurrenthp)if(bosscurrenthp<=0){console.log(恭喜🎉🎉~~~player_name攻擊成功，boss被擊敗!!!)client.end()}else{console.log(player_name對boss發起攻擊，造成attack_value傷害)constpayload={damage:attack_value,from:player_name,to:'boss'}client.publish('battle/action',json.stringify(payload))}}}catch(error){console.error('處理'battle/action'訊息時發生錯誤:',msg,error)}}",Checked
 陳鼎心,"client.on('connect',()=>{console.log(player_id已連線至mqttbroker)client.subscribe(topics.online)client.subscribe(topics.status)client.publish(topics.online,json.stringify(payload))settimeout(attackboss,2000)})client.on('msg',(topic,msg)=>{constpayload=msg.tostring()if(topic===topics.online){constpayload=json.parse(messagestr)if(data.id===player_id)returnif(data.id==='boss'&&data.online&&!isbossonline){console.log('對方玩家在線，遊戲開始！')isbossonline=trueattackboss()}}if(topic===topics.status){constpayload=json.parse(messagestr)console.log([第roundinfo.round回合])console.log(boss受到status.attacker的攻擊，損失status.damagehp，剩餘hp:status.remaininghealth)if(status.gameover){console.log(恭喜🎉🎉~~~status.attacker攻擊成功，boss被擊敗!!!)isgameover=true}else{settimeout(attackboss,500)}}})functionattackboss(){if(isgameover)returnconstpayload={action:'attack',id:player_id}client.publish(topics.action,json.stringify(payload))}",,,Checked
 陸人瑋,Correct,Correct,Correct,Checked
 顏聖峰,Correct,Correct,Correct,Checked
@@ -72,4 +72,4 @@ solution,client.subscribe('battle/action')client.subscribe('battle/online'),"con
 黃蓉容,Correct,Correct,Correct,Checked
 黃顥霆,Correct,Correct,Correct,Checked
 龔俐恬,Correct,Correct,Correct,Checked
-correctNum,66,60,59,
+correctNum,66,61,59,

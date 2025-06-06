@@ -12,6 +12,11 @@ def normalize_code(code):
     codelines = code.split('[nl]')
     code = ' '.join([line for line in codelines if not line.strip().startswith('//')])
 
+    codelines = code.split('\n')
+    codelines = [line.split('//')[0].strip() for line in codelines]
+    code = ' '.join([line for line in codelines if not line.strip().startswith('//')])
+    
+    
     # Remove all semicolons
     code = code.replace(';', '')
 
